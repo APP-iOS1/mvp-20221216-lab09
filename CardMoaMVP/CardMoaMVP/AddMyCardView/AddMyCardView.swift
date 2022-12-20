@@ -33,15 +33,15 @@ struct AddMyCardView: View {
                                         .font(.title2)
                                         .foregroundColor(.black)
                                         .bold()
-                                        .padding(.top, 30)
+                                        .padding(.top, 9)
                                         .padding(.trailing, 30)
                                     Image(systemName: "chevron.down")
                                         .padding(.trailing, 20)
-                                        .padding(.top, 40)
+                                        .padding(.top, 9)
                                 }
                                 Rectangle()
                                     .foregroundColor(.gray)
-                                    .frame(width: 150, height: 2)
+                                    .frame(width: 150, height: 3)
                                     .padding(.trailing, 20)
                                     .padding(.top, -10)
                             }

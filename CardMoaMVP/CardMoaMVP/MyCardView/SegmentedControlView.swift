@@ -30,7 +30,7 @@ struct SegmentedControlView: View {
             .font(.title2)
             .foregroundColor(Color.black)
             .background(Color.white)
-            .frame(width: 200, height: 100)
+            .frame(width: 200, height: 30)
             .bold()
         }
 
@@ -57,6 +57,7 @@ struct TabBarItem: View {
                         .matchedGeometryEffect(id: "underline",
                                                in: namespace,
                                                properties: .frame)
+                        .padding(.top, -10)
                 } else {
                     Color.clear.frame(height: 2)
                 }
