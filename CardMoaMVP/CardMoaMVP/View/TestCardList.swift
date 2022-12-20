@@ -10,15 +10,21 @@ import SwiftUI
 struct TestCardList: View {
     
     @EnvironmentObject var vm : ViewModel
-    
+    //    @StateObject var vm : ViewModel = ViewModel()
     
     var cardList = ["Hyundai", "NH", "Samsung"]
     @State var selectedCard : String = "Hyundai"
-
-    var cardName : String = ""
+    
+    
     
     var body: some View {
         VStack{
+            Button {
+            } label: {
+                Text("button")
+            }
+            
+            
             HStack{
                 // 카드 브랜드 선택
                 Picker("카드선택", selection: $selectedCard) {
@@ -28,21 +34,24 @@ struct TestCardList: View {
                 }
             }
             // 카드가 보여줄 부분
-            ForEach(vm.cards ,id: \.self){ index in
+            ForEach(vm.cards){ index in
                 Text(index.id)
-                ForEach(vm.categorys){ category in
-                    Text(category.id)
-                }
             }
+            
         }.onAppear{
             vm.fetchCards(cardBrand: selectedCard)
-            for i in vm.cards{
-                vm.fetchCategorys(cardBrand: selectedCard, cardName: i.cardName)
-            }
-//            vm.fetchCategorys(cardBrand: selectedCard, cardName:)
         }
         .onChange(of: selectedCard) { newValue in           //newValue 모르겠음
             vm.fetchCards(cardBrand: selectedCard)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                for i in vm.cards{
+                    vm.fetchCategorys(cardBrand: selectedCard, cardName: i.cardName)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                        print(vm.categorys)
+                    }
+                    
+                }
+            }
         }
     }
 }
@@ -50,5 +59,6 @@ struct TestCardList: View {
 struct TestCardList_Previews: PreviewProvider {
     static var previews: some View {
         TestCardList().environmentObject(ViewModel())
+        //        TestCardList()
     }
 }

@@ -19,7 +19,6 @@ struct TestView: View {
             VStack{
                 Button {
     //                vm.fetchCards(cardBrand:cardBrand)
-    //                vm.fetchCategorys(cardBrand: cardBrand, cardName: cardName)
                 } label: {
                     Text("버튼")
                 }
