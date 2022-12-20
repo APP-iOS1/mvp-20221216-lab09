@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		A71F69952951479D006CF5CE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F69942951479D006CF5CE /* Model.swift */; };
 		A71F6997295147C7006CF5CE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F6996295147C7006CF5CE /* ViewModel.swift */; };
 		A71F6999295147D0006CF5CE /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F6998295147D0006CF5CE /* TestView.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+
 		A71F69942951479D006CF5CE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A71F6996295147C7006CF5CE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A71F6998295147D0006CF5CE /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 				D7BEFDA129505B8A001D4AED /* FirebaseFirestore in Frameworks */,
 				D7BEFD9D29505B8A001D4AED /* FirebaseDatabase in Frameworks */,
 				D7BEFD9B29505B8A001D4AED /* FirebaseAuth in Frameworks */,
+				D5CBCA1129516C5600D199DD /* CollectionViewPagingLayout in Frameworks */,
 				D7BEFDA529505B8A001D4AED /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,9 +113,12 @@
 				A71F69932951477C006CF5CE /* ViewModel */,
 				A71F699229514767006CF5CE /* Model */,
 				A71F699029514756006CF5CE /* View */,
+
 				D7BEFD9729505B1C001D4AED /* GoogleService-Info.plist */,
 				D7BEFD8929505A96001D4AED /* CardMoaMVPApp.swift */,
 				D7BEFD8B29505A96001D4AED /* ContentView.swift */,
+				A806461929517AE600C3B32F /* BenefitSearch */,
+				D5CBCA0A295169B800D199DD /* ColorExtension.swift */,
 				D7BEFD8D29505A97001D4AED /* Assets.xcassets */,
 				D7BEFD8F29505A97001D4AED /* Preview Content */,
 			);
@@ -150,6 +156,7 @@
 				D7BEFDA029505B8A001D4AED /* FirebaseFirestore */,
 				D7BEFDA229505B8A001D4AED /* FirebaseFirestoreSwift */,
 				D7BEFDA429505B8A001D4AED /* FirebaseStorage */,
+				D5CBCA1029516C5600D199DD /* CollectionViewPagingLayout */,
 			);
 			productName = CardMoaMVP;
 			productReference = D7BEFD8629505A96001D4AED /* CardMoaMVP.app */;
@@ -181,6 +188,7 @@
 			mainGroup = D7BEFD7D29505A95001D4AED;
 			packageReferences = (
 				D7BEFD9929505B8A001D4AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D5CBCA0F29516C5500D199DD /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
 			);
 			productRefGroup = D7BEFD8729505A96001D4AED /* Products */;
 			projectDirPath = "";
@@ -218,6 +226,10 @@
 				D7BEFD8C29505A96001D4AED /* ContentView.swift in Sources */,
 				A71F6997295147C7006CF5CE /* ViewModel.swift in Sources */,
 				D7BEFD8A29505A96001D4AED /* CardMoaMVPApp.swift in Sources */,
+				D5CBCA132951737300D199DD /* SegmentedControlView.swift in Sources */,
+				A806461B29517B6D00C3B32F /* BenefitCategoryView.swift in Sources */,
+				A806461D29518F3F00C3B32F /* BenefitCategoryDetailView.swift in Sources */,
+				A806461829516F0800C3B32F /* BenefitSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +432,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D5CBCA0F29516C5500D199DD /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amirdew/CollectionViewPagingLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		D7BEFD9929505B8A001D4AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -431,6 +451,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D5CBCA1029516C5600D199DD /* CollectionViewPagingLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5CBCA0F29516C5500D199DD /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */;
+			productName = CollectionViewPagingLayout;
+		};
 		D7BEFD9A29505B8A001D4AED /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D7BEFD9929505B8A001D4AED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

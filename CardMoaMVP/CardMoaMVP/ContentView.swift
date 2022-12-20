@@ -17,9 +17,11 @@ struct ContentView: View {
             }else{
                 TestView()
             }
+
         }
-        .padding()
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
