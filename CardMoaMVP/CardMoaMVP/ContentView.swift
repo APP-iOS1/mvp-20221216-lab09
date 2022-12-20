@@ -13,7 +13,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        //        NavigationStack {
+
         TabView {
             MyCardView().tabItem {
                 Image(systemName: "creditcard")
@@ -24,6 +24,7 @@ struct ContentView: View {
                 Text("내 주변 혜택")
             }.tag(2)
             
+
             BenefitSearchView().tabItem {
                 Image(systemName: "magnifyingglass")
                 Text("혜택 검색")
@@ -36,13 +37,13 @@ struct ContentView: View {
                 Image(systemName: "person.crop.rectangle")
                 Text("나의 소비")
             }.tag(5)
-            //            }
         }
         .onAppear() {
             UITabBar.appearance().barTintColor = UIColor(Color.white)
         }
-        
     }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
