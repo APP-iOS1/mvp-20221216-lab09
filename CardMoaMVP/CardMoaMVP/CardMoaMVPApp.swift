@@ -25,7 +25,7 @@ struct CardMoaMVPApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(AuthViewModel()).environmentObject(ViewModel())
+            ContentView()
         }
     }
 }
