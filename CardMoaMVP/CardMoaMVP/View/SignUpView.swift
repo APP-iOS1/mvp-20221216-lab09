@@ -31,22 +31,11 @@ struct SignUpView: View {
     
     var body: some View {
         NavigationStack{
-            VStack{
-                TextField("이름", text: $nameText)
-                
-                HStack{
-                    TextField("아이디", text: $idText)
-                    Button {
-                        
-                    } label: {
-                        Text("중복체크")
-                    }
-                }
-                
-                SecureField("비밀번호", text: $passwordText)
-                
-                SecureField("비밀번호 확인", text: $passwordCheckText)
-                
+            VStack(spacing: 30){
+                NameFieldSection
+                IDFieldSection
+                PasswordFieldSection
+                PasswordCheckFieldSection
                 Button {
                     authModel.signUp(name: nameText, userId: idText, userPassword: passwordText) { intValue, uidValue  in
                         switch intValue {
@@ -72,19 +61,25 @@ struct SignUpView: View {
                     
                 } label: {
                     Text("회원가입")
-                }
-                
-                
+                        .bold()
+                }.frame(width: 200, height: 45)
+                    .foregroundColor(.white)
+                    .background(Rectangle().fill(Color("MainColor")))
+                    .cornerRadius(10)
             }
-            .padding()
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         dismiss()
                     } label: {
-                        Text("돌아가기")
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
+                        HStack {
+                            Image(systemName: "chevron.backward")
+                                .bold()
+                            Text("돌아가기")
+                                .fontWeight(.bold)
+                                .foregroundColor(.black)
+                            
+                        }
                     }
                 }
             }
@@ -93,6 +88,127 @@ struct SignUpView: View {
         
         
     }
+    
+    // MARK: - 이름입력필드
+    private var NameFieldSection : some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(systemName: "person.fill")
+                    .foregroundColor(.mainColor)
+                Text("이름")
+                
+            }
+            HStack {
+                TextField("이름을 입력해주세요", text: $nameText)
+                    .frame(width: 300)
+                    .textInputAutocapitalization(.never)
+                    .foregroundColor(.black)
+                    .overlay(Rectangle().frame(height: 2).padding(.top, 30))
+                    .foregroundColor(.mainColor)
+            }
+        }
+    }
+    
+    // MARK: - 아이디 입력필드
+    private var IDFieldSection : some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(systemName: "key.fill")
+                    .foregroundColor(.mainColor)
+                Text("아이디")
+                
+            }
+            
+            HStack {
+                TextField("아이디를 입력해주세요", text: $idText)
+                    .frame(width: 220)
+                    .textInputAutocapitalization(.never)
+                    .foregroundColor(.black)
+                    .overlay(Rectangle().frame(height: 2).padding(.top, 30))
+                    .foregroundColor(.mainColor)
+                Button {
+                    
+                } label: {
+                    Text("중복 확인")
+                }
+                .frame(width: 80, height: 30)
+                .foregroundColor(.mainColor)
+            }
+        }
+    }
+    
+    // MARK: - 바밀번호 입력필드
+    private var PasswordFieldSection : some View {
+        VStack(alignment: .leading) {
+            
+            HStack {
+                Image(systemName: "lock.fill")
+                    .foregroundColor(.mainColor)
+                Text("비밀번호")
+                
+            }
+            
+            SecureField("비밀번호를 입력해주세요", text: $passwordText)
+                .frame(width: 300)
+                .textInputAutocapitalization(.never)
+                .foregroundColor(.black)
+                .overlay(Rectangle().frame(height: 2).padding(.top, 30))
+                .foregroundColor(.mainColor)
+            
+            
+            if passwordText.count > 5 {
+                Text("사용 가능한 비밀번호입니다.\n")
+                    .foregroundColor(.green)
+                    .font(.caption)
+                
+            } else if passwordText.isEmpty == false {
+                
+                Text("비밀번호는 최소 6자리 이상으로 구성되어야합니다.\n")
+                    .foregroundColor(.red)
+                    .font(.caption)
+                
+            } else {
+                Text("\n")
+                    .font(.caption)
+            }
+        }
+    }
+    
+    // MARK: - 비밀번호 확인 필드
+    private var PasswordCheckFieldSection : some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(systemName: "lock")
+                    .foregroundColor(.mainColor)
+                Text("비밀번호 확인")
+                
+            }
+            SecureField("비밀번호를 다시 입력해주세요", text: $passwordCheckText)
+                .frame(width: 300)
+                .textInputAutocapitalization(.never)
+                .foregroundColor(.black)
+                .overlay(Rectangle().frame(height: 2).padding(.top, 30))
+                .foregroundColor(.mainColor)
+            
+            
+            if (passwordText==passwordCheckText) && !passwordText.isEmpty {
+                Text("비밀번호가 일치합니다.\n")
+                    .foregroundColor(.green)
+                    .font(.caption)
+            } else if passwordCheckText.isEmpty == false {
+                
+                Text("비밀번호가 일치하지 않습니다.\n")
+                    .foregroundColor(.red)
+                    .font(.caption)
+                
+            } else {
+                Text("\n")
+                    .font(.caption)
+            }
+        }
+        
+    }
+    
 }
 
 struct SignUpView_Previews: PreviewProvider {

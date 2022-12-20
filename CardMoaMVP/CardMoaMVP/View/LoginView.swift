@@ -28,8 +28,15 @@ struct LoginView: View {
     
     var body: some View {
         VStack{
-            TextField("아이디", text: $idText)
-            SecureField("비밀번호", text: $passwordText)
+            Spacer()
+            Image("logoImg")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 180)
+                .padding(.bottom, 50)
+            IDFiledSection
+                .padding(.bottom)
+            PasswordFiledSection
             
             Button {
                 authModel.loginUser(email: idText, password: passwordText){ codeValue in
@@ -49,13 +56,22 @@ struct LoginView: View {
                 }
             } label: {
                 Text("로그인")
+                    .bold()
             }
+            .frame(width: 200, height: 45)
+            .foregroundColor(.white)
+            .background(Rectangle().fill(Color("MainColor")))
+            .cornerRadius(10)
+            .padding(.top, 40)
+            
+            
             Button {
                 signUpBool.toggle()
             } label: {
                 Text("회원가입")
-            }
+            }.padding(.top, 7)
             
+            Spacer()
             
         }.padding()
             .fullScreenCover(isPresented: $signUpBool) {
@@ -65,6 +81,38 @@ struct LoginView: View {
         
         
         
+    }
+    
+    private var IDFiledSection : some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(systemName: "key.fill")
+                    .foregroundColor(.mainColor)
+                Text("아이디")
+            }
+            TextField("아이디를 입력해주세요", text: $idText)
+                .frame(width: 300)
+                .textInputAutocapitalization(.never)
+                .foregroundColor(.black)
+                .overlay(Rectangle().frame(height: 2).padding(.top, 30))
+                .foregroundColor(.mainColor)
+        }
+    }
+    
+    private var PasswordFiledSection : some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Image(systemName: "lock.fill")
+                    .foregroundColor(.mainColor)
+                Text("비밀번호")
+            }
+            SecureField("비밀번호를 입력해주세요", text: $passwordText)
+                .frame(width: 300)
+                .textInputAutocapitalization(.never)
+                .foregroundColor(.black)
+                .overlay(Rectangle().frame(height: 2).padding(.top, 30))
+                .foregroundColor(.mainColor)
+        }
     }
 }
 
