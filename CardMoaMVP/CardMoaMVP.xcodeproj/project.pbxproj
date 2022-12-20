@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A806461829516F0800C3B32F /* BenefitSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806461729516F0800C3B32F /* BenefitSearchView.swift */; };
+		A806461B29517B6D00C3B32F /* BenefitCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806461A29517B6D00C3B32F /* BenefitCategoryView.swift */; };
+		A806461D29518F3F00C3B32F /* BenefitCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806461C29518F3F00C3B32F /* BenefitCategoryDetailView.swift */; };
 		D5CBCA0B295169B800D199DD /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CBCA0A295169B800D199DD /* ColorExtension.swift */; };
 		D5CBCA0E29516BDD00D199DD /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CBCA0D29516BDD00D199DD /* MyCardView.swift */; };
 		D5CBCA1129516C5600D199DD /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = D5CBCA1029516C5600D199DD /* CollectionViewPagingLayout */; };
@@ -24,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A806461729516F0800C3B32F /* BenefitSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitSearchView.swift; sourceTree = "<group>"; };
+		A806461A29517B6D00C3B32F /* BenefitCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitCategoryView.swift; sourceTree = "<group>"; };
+		A806461C29518F3F00C3B32F /* BenefitCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitCategoryDetailView.swift; sourceTree = "<group>"; };
 		D5CBCA0A295169B800D199DD /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		D5CBCA0D29516BDD00D199DD /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
 		D7BEFD8629505A96001D4AED /* CardMoaMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardMoaMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +58,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A806461929517AE600C3B32F /* BenefitSearch */ = {
+			isa = PBXGroup;
+			children = (
+				A806461729516F0800C3B32F /* BenefitSearchView.swift */,
+				A806461A29517B6D00C3B32F /* BenefitCategoryView.swift */,
+				A806461C29518F3F00C3B32F /* BenefitCategoryDetailView.swift */,
+			);
+			path = BenefitSearch;
+			sourceTree = "<group>";
+		};
 		D5CBCA0C29516BCA00D199DD /* MyCardView */ = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +99,7 @@
 				D7BEFD9729505B1C001D4AED /* GoogleService-Info.plist */,
 				D7BEFD8929505A96001D4AED /* CardMoaMVPApp.swift */,
 				D7BEFD8B29505A96001D4AED /* ContentView.swift */,
+				A806461929517AE600C3B32F /* BenefitSearch */,
 				D5CBCA0A295169B800D199DD /* ColorExtension.swift */,
 				D7BEFD8D29505A97001D4AED /* Assets.xcassets */,
 				D7BEFD8F29505A97001D4AED /* Preview Content */,
@@ -184,8 +201,11 @@
 			files = (
 				D5CBCA0B295169B800D199DD /* ColorExtension.swift in Sources */,
 				D7BEFD8C29505A96001D4AED /* ContentView.swift in Sources */,
+				A806461B29517B6D00C3B32F /* BenefitCategoryView.swift in Sources */,
 				D5CBCA0E29516BDD00D199DD /* MyCardView.swift in Sources */,
+				A806461D29518F3F00C3B32F /* BenefitCategoryDetailView.swift in Sources */,
 				D7BEFD8A29505A96001D4AED /* CardMoaMVPApp.swift in Sources */,
+				A806461829516F0800C3B32F /* BenefitSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
