@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
+		A71F69952951479D006CF5CE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F69942951479D006CF5CE /* Model.swift */; };
+		A71F6997295147C7006CF5CE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F6996295147C7006CF5CE /* ViewModel.swift */; };
+		A71F6999295147D0006CF5CE /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F6998295147D0006CF5CE /* TestView.swift */; };
+		A71F699B29515185006CF5CE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F699A29515185006CF5CE /* LoginView.swift */; };
+		A71F699D2951524B006CF5CE /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F699C2951524B006CF5CE /* SignUpView.swift */; };
+		A71F699F29515586006CF5CE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F699E29515586006CF5CE /* AuthViewModel.swift */; };
+		A71F69A129517CF5006CF5CE /* TestCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F69A029517CF5006CF5CE /* TestCardList.swift */; };
+		A71F69A32951B538006CF5CE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F69A22951B538006CF5CE /* ContentView.swift */; };
 		A806461829516F0800C3B32F /* BenefitSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806461729516F0800C3B32F /* BenefitSearchView.swift */; };
 		A806461B29517B6D00C3B32F /* BenefitCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806461A29517B6D00C3B32F /* BenefitCategoryView.swift */; };
 		A806461D29518F3F00C3B32F /* BenefitCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A806461C29518F3F00C3B32F /* BenefitCategoryDetailView.swift */; };
@@ -23,7 +32,6 @@
 		D5CBCA252951953700D199DD /* SelectCompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CBCA242951953700D199DD /* SelectCompanyView.swift */; };
 		D5CBCA272951987500D199DD /* AddCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CBCA262951987500D199DD /* AddCardListView.swift */; };
 		D7BEFD8A29505A96001D4AED /* CardMoaMVPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFD8929505A96001D4AED /* CardMoaMVPApp.swift */; };
-		D7BEFD8C29505A96001D4AED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFD8B29505A96001D4AED /* ContentView.swift */; };
 		D7BEFD8E29505A97001D4AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7BEFD8D29505A97001D4AED /* Assets.xcassets */; };
 		D7BEFD9129505A97001D4AED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7BEFD9029505A97001D4AED /* Preview Assets.xcassets */; };
 		D7BEFD9829505B1C001D4AED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7BEFD9729505B1C001D4AED /* GoogleService-Info.plist */; };
@@ -36,6 +44,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+
+		A71F69942951479D006CF5CE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A71F6996295147C7006CF5CE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		A71F6998295147D0006CF5CE /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		A71F699A29515185006CF5CE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A71F699C2951524B006CF5CE /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		A71F699E29515586006CF5CE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		A71F69A029517CF5006CF5CE /* TestCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCardList.swift; sourceTree = "<group>"; };
+		A71F69A22951B538006CF5CE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A806461729516F0800C3B32F /* BenefitSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitSearchView.swift; sourceTree = "<group>"; };
 		A806461A29517B6D00C3B32F /* BenefitCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitCategoryView.swift; sourceTree = "<group>"; };
 		A806461C29518F3F00C3B32F /* BenefitCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenefitCategoryDetailView.swift; sourceTree = "<group>"; };
@@ -52,7 +69,6 @@
 		D5CBCA262951987500D199DD /* AddCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardListView.swift; sourceTree = "<group>"; };
 		D7BEFD8629505A96001D4AED /* CardMoaMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardMoaMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7BEFD8929505A96001D4AED /* CardMoaMVPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoaMVPApp.swift; sourceTree = "<group>"; };
-		D7BEFD8B29505A96001D4AED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D7BEFD8D29505A97001D4AED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7BEFD9029505A97001D4AED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7BEFD9729505B1C001D4AED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -76,6 +92,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A71F699029514756006CF5CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A71F6998295147D0006CF5CE /* TestView.swift */,
+				A71F69A029517CF5006CF5CE /* TestCardList.swift */,
+				A71F699A29515185006CF5CE /* LoginView.swift */,
+				A71F699C2951524B006CF5CE /* SignUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A71F699229514767006CF5CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A71F69942951479D006CF5CE /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A71F69932951477C006CF5CE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A71F6996295147C7006CF5CE /* ViewModel.swift */,
+				A71F699E29515586006CF5CE /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
 		A806461929517AE600C3B32F /* BenefitSearch */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,10 +179,18 @@
 		D7BEFD8829505A96001D4AED /* CardMoaMVP */ = {
 			isa = PBXGroup;
 			children = (
+
+				A71F69932951477C006CF5CE /* ViewModel */,
+				A71F699229514767006CF5CE /* Model */,
+				A71F699029514756006CF5CE /* View */,
+
 				D5CBCA2129517EAC00D199DD /* AddMyCardView */,
 				D5CBCA0C29516BCA00D199DD /* MyCardView */,
+
 				D7BEFD9729505B1C001D4AED /* GoogleService-Info.plist */,
+				A71F69A22951B538006CF5CE /* ContentView.swift */,
 				D7BEFD8929505A96001D4AED /* CardMoaMVPApp.swift */,
+
 				D7BEFD8B29505A96001D4AED /* ContentView.swift */,
 				A806461929517AE600C3B32F /* BenefitSearch */,
 				D5CBCA0A295169B800D199DD /* ColorExtension.swift */,
@@ -242,6 +292,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
+				A71F699B29515185006CF5CE /* LoginView.swift in Sources */,
+				A71F69A129517CF5006CF5CE /* TestCardList.swift in Sources */,
+				A71F69952951479D006CF5CE /* Model.swift in Sources */,
+				A71F6999295147D0006CF5CE /* TestView.swift in Sources */,
+				A71F699D2951524B006CF5CE /* SignUpView.swift in Sources */,
+				A71F69A32951B538006CF5CE /* ContentView.swift in Sources */,
+				A71F699F29515586006CF5CE /* AuthViewModel.swift in Sources */,
+				A71F6997295147C7006CF5CE /* ViewModel.swift in Sources */,
+
 				D5CBCA272951987500D199DD /* AddCardListView.swift in Sources */,
 				D5CBCA252951953700D199DD /* SelectCompanyView.swift in Sources */,
 				D5CBCA0B295169B800D199DD /* ColorExtension.swift in Sources */,
