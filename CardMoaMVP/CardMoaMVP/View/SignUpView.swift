@@ -33,7 +33,7 @@ struct SignUpView: View {
         NavigationStack{
             VStack(spacing: 10){
                 NameFieldSection
-                IDFieldSection
+                EmailFieldSection
                 PasswordFieldSection
                 PasswordCheckFieldSection
                 Button {
@@ -115,17 +115,22 @@ struct SignUpView: View {
     }
     
     // MARK: - 아이디 입력필드
-    private var IDFieldSection : some View {
+    func checkEmailRule(email : String) -> Bool {
+        let regExp = #"^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"#
+        return email.range(of: regExp, options: .regularExpression) != nil
+    }
+    
+    private var EmailFieldSection : some View {
         VStack(alignment: .leading) {
             HStack {
-                Image(systemName: "key.fill")
+                Image(systemName: "envelope.circle.fill")
                     .foregroundColor(.mainColor)
-                Text("아이디")
+                Text("이메일")
                 
             }
             
             HStack {
-                TextField("아이디를 입력해주세요", text: $idText)
+                TextField("이메일을 입력해주세요", text: $idText)
                     .frame(width: 210)
                     .textInputAutocapitalization(.never)
                     .foregroundColor(.black)
@@ -143,8 +148,23 @@ struct SignUpView: View {
                 .shadow(radius: 5, x:5, y:5)
 
             }
-            Text("\n")
-                .font(.caption)
+            
+            if checkEmailRule(email: idText) {
+                
+                Text("사용 가능한 이메일입니다.\n")
+                    .foregroundColor(.green)
+                    .font(.caption)
+                
+            } else if idText.isEmpty == false {
+                
+                Text("유효하지 않은 이메일 형식입니다.\n")
+                    .foregroundColor(.red)
+                    .font(.caption)
+                
+            } else {
+                Text(" \n")
+                    .font(.caption)
+            }
         }
     }
     

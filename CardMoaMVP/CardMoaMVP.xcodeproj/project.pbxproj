@@ -30,6 +30,8 @@
 		A7B61E952951DDD1000272A4 /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B61E8D2951DDD1000272A4 /* CardBackView.swift */; };
 		A7B61E962951DDD1000272A4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B61E8F2951DDD1000272A4 /* Card.swift */; };
 		D5B88FCC2952A76200B42622 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B88FCB2952A76200B42622 /* Company.swift */; };
+		D5B88FCF2952E76200B42622 /* CardMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B88FCE2952E76200B42622 /* CardMapView.swift */; };
+		D5B88FD12952E83600B42622 /* CategoryButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B88FD02952E83600B42622 /* CategoryButtons.swift */; };
 		D7BEFD8A29505A96001D4AED /* CardMoaMVPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFD8929505A96001D4AED /* CardMoaMVPApp.swift */; };
 		D7BEFD8C29505A96001D4AED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFD8B29505A96001D4AED /* ContentView.swift */; };
 		D7BEFD8E29505A97001D4AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7BEFD8D29505A97001D4AED /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		A7B61E8D2951DDD1000272A4 /* CardBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
 		A7B61E8F2951DDD1000272A4 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		D5B88FCB2952A76200B42622 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		D5B88FCE2952E76200B42622 /* CardMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMapView.swift; sourceTree = "<group>"; };
+		D5B88FD02952E83600B42622 /* CategoryButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtons.swift; sourceTree = "<group>"; };
 		D7BEFD8629505A96001D4AED /* CardMoaMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardMoaMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7BEFD8929505A96001D4AED /* CardMoaMVPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoaMVPApp.swift; sourceTree = "<group>"; };
 		D7BEFD8B29505A96001D4AED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -163,6 +167,15 @@
 			path = TestFile;
 			sourceTree = "<group>";
 		};
+		D5B88FCD2952E74D00B42622 /* CardMapView */ = {
+			isa = PBXGroup;
+			children = (
+				D5B88FCE2952E76200B42622 /* CardMapView.swift */,
+				D5B88FD02952E83600B42622 /* CategoryButtons.swift */,
+			);
+			path = CardMapView;
+			sourceTree = "<group>";
+		};
 		D7BEFD7D29505A95001D4AED = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				A7B61E852951DDCA000272A4 /* ColorExtension.swift */,
+				D5B88FCD2952E74D00B42622 /* CardMapView */,
 				A7B61E872951DDD1000272A4 /* MyCardView */,
 				A7B61E7E2951DDC5000272A4 /* BenefitSearch */,
 				A7B61E772951DDC1000272A4 /* AddMyCardView */,
@@ -308,6 +322,8 @@
 				D7BEFD8C29505A96001D4AED /* ContentView.swift in Sources */,
 				A7B61E832951DDC5000272A4 /* BenefitCategoryDetailView.swift in Sources */,
 				A7B61E952951DDD1000272A4 /* CardBackView.swift in Sources */,
+				D5B88FCF2952E76200B42622 /* CardMapView.swift in Sources */,
+				D5B88FD12952E83600B42622 /* CategoryButtons.swift in Sources */,
 				A7B61E962951DDD1000272A4 /* Card.swift in Sources */,
 				A7B61E922951DDD1000272A4 /* SegmentedControlView.swift in Sources */,
 				A71F6997295147C7006CF5CE /* ViewModel.swift in Sources */,
