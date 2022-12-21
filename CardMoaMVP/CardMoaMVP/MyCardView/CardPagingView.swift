@@ -9,28 +9,25 @@ import SwiftUI
 import CollectionViewPagingLayout
 
 struct CardPagingView: View {
-    @EnvironmentObject var vm : ViewModel
-    
     var options: ScaleTransformViewOptions {
         .layout(.linear)
     }
     
     var body: some View {
-                //Card.cardList -> vm.userCards 대체
-                ScalePageView(vm.userCards) { card in
-                    CardFlipView(card: card)
-                }
-                .options(options)
-                .pagePadding(
-                    vertical: .absolute(100),
-                    horizontal: .absolute(80)
-                )
-                .frame(height: 500)
+        ScalePageView(Card.cardList) { card in
+            CardFlipView(card: card)
+        }
+        .options(options)
+        .pagePadding(
+            vertical: .absolute(100),
+            horizontal: .absolute(80)
+        )
+        .frame(height: 500)
     }
 }
 
 struct CardPagingView_Previews: PreviewProvider {
     static var previews: some View {
-        CardPagingView().environmentObject(ViewModel())
+        CardPagingView()
     }
 }
