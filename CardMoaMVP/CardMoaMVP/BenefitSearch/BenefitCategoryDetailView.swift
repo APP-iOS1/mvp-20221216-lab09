@@ -11,15 +11,14 @@ import SwiftUI
 struct BenefitCategoryDetailView: View {
     var body: some View {
         VStack {
-            HStack{
-                Text("카테고리명")
-                    .font(.largeTitle)
-                    .padding(.leading, 20)
-                    .padding(.top)
-                    .fontWeight(.bold)
-                Spacer()
-            }
-            
+//            HStack{
+//                Text("카테고리명")
+//                    .font(.largeTitle)
+//                    .padding(.leading, 20)
+//                    .padding(.top)
+//                    .fontWeight(.bold)
+//                Spacer()
+//            }
             ScrollView {
                 //Foreach 넣기
                 VStack(alignment: .leading) {
@@ -44,11 +43,12 @@ struct BenefitCategoryDetailView: View {
                 }
                 .frame(width: 330)
                 .padding()
-                .background(Color.lightGray)
-                .cornerRadius(20)
+                .background(.white)
+                .cornerRadius(10)
                 .padding(5)
-//                .shadow(radius: 1)
+                .shadow(radius: 7, x: 0, y: 5)
             }
+            .navigationTitle("카테고리명")
         }
     }
 }
