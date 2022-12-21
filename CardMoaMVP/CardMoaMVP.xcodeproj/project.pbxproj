@@ -131,16 +131,11 @@
 		A7B61E772951DDC1000272A4 /* AddMyCardView */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				A7B61E7A2951DDC1000272A4 /* AddMyCardView.swift */,
-				A7B61E782951DDC1000272A4 /* AddCardListView.swift */,
-				A7B61E792951DDC1000272A4 /* SelectCompanyView.swift */,
-=======
 				A7B61E782951DDC1000272A4 /* AddCardCell.swift */,
 				A7B61E792951DDC1000272A4 /* SelectCompanyView.swift */,
 				D5B88FCB2952A76200B42622 /* Company.swift */,
 				A7B61E7A2951DDC1000272A4 /* AddMyCardView.swift */,
->>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734
+
 			);
 			path = AddMyCardView;
 			sourceTree = "<group>";

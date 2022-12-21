@@ -174,10 +174,7 @@ struct AddCardCell: View {
 
 struct AddCardCell_Previews: PreviewProvider {
     static var previews: some View {
-<<<<<<< HEAD:CardMoaMVP/CardMoaMVP/AddMyCardView/AddCardListView.swift
-        AddCardListView(card: CardName(id: " ", cardImage: " ", cardName: " ", categorys:[]) ).environmentObject(ViewModel())
-=======
-        AddCardCell(card: Card(name: "삼성 ID ON", imgName: "Samsung_iDON"))
->>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734:CardMoaMVP/CardMoaMVP/AddMyCardView/AddCardCell.swift
+        AddCardCell(card: CardName(id: " ", cardImage: " ", cardName: " ", categorys:[]) ).environmentObject(ViewModel())
+
     }
 }

@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SelectCompanyView: View {
     let data = Array(1...15).map { "name \($0)"}
-<<<<<<< HEAD
+    
     let cardCompany = ["현대카드" , "농협카드" ,"삼성카드" ,"신한카드", "카카오카드"]
-=======
+    
     @State var currentCompany: String = "삼성카드"
     @Binding var showingSheet: Bool
     var currentCompanyStore: CurrentCompanyStore
     
->>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734
+    
     //화면을 그리드형식으로 꽉채워줌
     let columns = [
         //추가 하면 할수록 화면에 보여지는 개수가 변함
@@ -31,7 +31,6 @@ struct SelectCompanyView: View {
         VStack{
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-<<<<<<< HEAD
                     ForEach(cardCompany, id: \.self) {i in
                         
                         Button {
@@ -48,27 +47,23 @@ struct SelectCompanyView: View {
                         }
                         
                         
-                        
-                        
-=======
-                    ForEach(company, id: \.self) {i in
-                        Button {
-                            currentCompanyStore.companyName = i
-                            showingSheet.toggle()
-                        } label: {
-                            VStack {
-                                Image(i)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 35)
-                                Text(i)
-                                    .font(.footnote)
-                                    .bold()
-                                    .foregroundColor(.black)
-                            }
-                        }
-                        .padding(.top, 40)
->>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734
+                        //                    ForEach(company, id: \.self) {i in
+                        //                        Button {
+                        //                            currentCompanyStore.companyName = i
+                        //                            showingSheet.toggle()
+                        //                        } label: {
+                        //                            VStack {
+                        //                                Image(i)
+                        //                                    .resizable()
+                        //                                    .scaledToFit()
+                        //                                    .frame(height: 35)
+                        //                                Text(i)
+                        //                                    .font(.footnote)
+                        //                                    .bold()
+                        //                                    .foregroundColor(.black)
+                        //                            }
+                        //                        }
+                        //                        .padding(.top, 40)
                     }
                 }
             }
@@ -81,10 +76,6 @@ struct SelectCompanyView: View {
 
 struct SelectCompanyView_Previews: PreviewProvider {
     static var previews: some View {
-<<<<<<< HEAD
-        SelectCompanyView().environmentObject(ViewModel())
-=======
-        SelectCompanyView(showingSheet: .constant(true), currentCompanyStore: CurrentCompanyStore() )
->>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734
+        SelectCompanyView(showingSheet: .constant(true), currentCompanyStore: CurrentCompanyStore()).environmentObject(ViewModel())
     }
 }

@@ -13,16 +13,13 @@ class CurrentCompanyStore: ObservableObject {
 
 struct AddMyCardView: View {
     @State private var segmentationSelection2 = 0
-<<<<<<< HEAD
     @State private var company = "현대카드"
     @State private var showingSheet = false
     @EnvironmentObject var vm : ViewModel
-=======
-    @State var showingSheet = false
+
     @Binding var currentCompany: String
     @ObservedObject var currentCompanyStore = CurrentCompanyStore()
->>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734
-    
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -101,10 +98,6 @@ struct AddMyCardView: View {
 struct AddMyCardView_Previews: PreviewProvider {
 
     static var previews: some View {
-<<<<<<< HEAD
-        AddMyCardView().environmentObject(ViewModel())
-=======
-        AddMyCardView(currentCompany: .constant("삼성카드"))
->>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734
+        AddMyCardView(currentCompany: .constant("삼성카드")).environmentObject(ViewModel())
     }
 }
