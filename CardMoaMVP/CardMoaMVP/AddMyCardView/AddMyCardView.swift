@@ -13,9 +13,7 @@ class CurrentCompanyStore: ObservableObject {
 
 struct AddMyCardView: View {
     @State private var segmentationSelection2 = 0
-    @State private var company = "현대카드"
     @EnvironmentObject var vm : ViewModel
-
     @Binding var currentCompany: String
     @ObservedObject var currentCompanyStore = CurrentCompanyStore()
 
@@ -39,7 +37,7 @@ struct AddMyCardView: View {
                         } label: {
                             VStack {
                                 HStack {
-                                    Text(currentCompanyStore.companyName)
+                                    Text(currentCompany)
                                         .lineLimit(1)
                                        // .font(.title2)
                                         .foregroundColor(.black)
@@ -83,9 +81,10 @@ struct AddMyCardView: View {
                         VStack {
                             AddCardCell(card: card)
                         }
-//                        .onAppear{ 
-//                            vm.fetchCards(cardBrand: "Samsung")    //모달을 내리면 계속 NH카드로 보여지는 거 같음
-//                        }
+                        .onAppear() {
+                            currentCompany = currentCompanyStore.companyName
+                        }
+
                         .padding(.bottom, 30)
                     }
                     .navigationTitle("카드 추가")
