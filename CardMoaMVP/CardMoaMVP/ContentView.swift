@@ -23,7 +23,7 @@ struct ContentView: View {
                     Image(systemName: "creditcard")
                     Text("나의 카드")
                 }.tag(1)
-                Text("test").tabItem {
+                CardMapView().tabItem {
                     Image(systemName: "map")
                     Text("내 주변 혜택")
                 }.tag(2)

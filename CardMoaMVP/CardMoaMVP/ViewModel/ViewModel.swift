@@ -119,8 +119,8 @@ class ViewModel : ObservableObject{
                     
                     for i in myCard{
                         let myCard : [String:String] = i as! [String:String]
-                        let cardImage : String = myCard["cardImage"] as? String ?? ""
-                        let cardName : String = myCard["cardName"] as? String ?? ""
+                        let cardImage : String = myCard["cardImage"] ?? ""
+                        let cardName : String = myCard["cardName"] ?? ""
                         
                         //                        self.userCards.append(UserCard(cardName: cardName, cardImage: cardImage))
                         self.userCards.append(UserCard(id: UUID().uuidString, cardName: cardName, cardImage: cardImage))
@@ -132,11 +132,13 @@ class ViewModel : ObservableObject{
     // MARK: 유저데이터에 카드, 최근 검색 저장
     func addUsersData(cardName: String, cardImage: String){
         let authId = Auth.auth().currentUser?.uid ?? ""
-
         
-        let mycard = UsersMyCard(currentSearch: ["테스트"], myCard: [MyCard(cardName: cardName, cardImage: cardImage)])
         
-        database.collection("Users").document(authId).setData(mycard as! [String : Any]){ error in
+        let userData = ["currentSearch" : ["Test"], "myCard" : [MyCard(cardName: cardName, cardImage: cardImage)]]
+        
+        let Data = [""]
+        
+        Firestore.firestore().collection("users").document(authId).setData(userData) {error in
             
             if let error = error {
                 print(error)
@@ -144,10 +146,19 @@ class ViewModel : ObservableObject{
             }
             print("success")
         }
+        
+        //    database.collection("Users").document(authId).setData(userData ){ error in
+        //
+        //        if let error = error {
+        //            print(error)
+        //            return
+        //        }
+        //        print("success")
+        //    }
     }
     
-    
 }
-
-
-
+    
+    
+    
+    

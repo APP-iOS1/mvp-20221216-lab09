@@ -34,7 +34,7 @@ struct LoginView: View {
                 .scaledToFit()
                 .frame(width: 180)
                 .padding(.bottom, 50)
-            IDFiledSection
+            EmailFieldSection
                 .padding(.bottom)
             PasswordFiledSection
             
@@ -83,14 +83,14 @@ struct LoginView: View {
         
     }
     
-    private var IDFiledSection : some View {
+    private var EmailFieldSection : some View {
         VStack(alignment: .leading) {
             HStack {
-                Image(systemName: "key.fill")
+                Image(systemName: "envelope.circle.fill")
                     .foregroundColor(.mainColor)
-                Text("아이디")
+                Text("이메일")
             }
-            TextField("아이디를 입력해주세요", text: $idText)
+            TextField("이메일을 입력해주세요", text: $idText)
                 .frame(width: 300)
                 .textInputAutocapitalization(.never)
                 .foregroundColor(.black)

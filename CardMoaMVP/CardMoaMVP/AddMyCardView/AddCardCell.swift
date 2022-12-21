@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddCardListView: View {
+struct AddCardCell: View {
     @State var listX: CGFloat = 0
     var card: CardName
     
@@ -33,15 +33,16 @@ struct AddCardListView: View {
                         }
                         .padding(.trailing, 20)
                         
-                        Text(arrow)
+                        Image(systemName: "chevron.left.2")
                             .padding(3)
-                            .foregroundColor(.gray)
-                            .bold()
+                            .foregroundColor(.mainColor)
+                            //.bold()
                             
                     }
                 )
 
             ZStack {
+                
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.white)
                     .frame(width: UIScreen.main.bounds.width - 60, height: 170)
@@ -55,7 +56,7 @@ struct AddCardListView: View {
                         Spacer()
                     }
                     .padding(.leading, 10)
-                    .font(.title2)
+                    .font(.title3)
                     .bold()
 
                     HStack {
@@ -138,9 +139,9 @@ struct AddCardListView: View {
             .gesture(
                 DragGesture()
                     .onChanged { value in
-                        if listX <= 0 && listX >= -90 { //-90보다 크고 0보다 작을 때
+                        if listX <= 0 && listX >= -20 { //-90보다 크고 0보다 작을 때
                             listX += value.translation.width / 30
-                            if listX <= -90 { // -90보다 작거나 같을 때
+                            if listX <= -20 { // -90보다 작거나 같을 때
                                 showingAlert = true
                                
                             }
@@ -171,8 +172,12 @@ struct AddCardListView: View {
 }
 
 
-struct AddCardListView_Previews: PreviewProvider {
+struct AddCardCell_Previews: PreviewProvider {
     static var previews: some View {
+<<<<<<< HEAD:CardMoaMVP/CardMoaMVP/AddMyCardView/AddCardListView.swift
         AddCardListView(card: CardName(id: " ", cardImage: " ", cardName: " ", categorys:[]) ).environmentObject(ViewModel())
+=======
+        AddCardCell(card: Card(name: "삼성 ID ON", imgName: "Samsung_iDON"))
+>>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734:CardMoaMVP/CardMoaMVP/AddMyCardView/AddCardCell.swift
     }
 }
