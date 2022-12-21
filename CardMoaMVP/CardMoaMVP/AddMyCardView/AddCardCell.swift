@@ -33,7 +33,7 @@ struct AddCardCell: View {
                         Image(systemName: "chevron.left.2")
                             .padding(3)
                             .foregroundColor(.mainColor)
-                            .bold()
+                            //.bold()
                             
                     }
                 )
@@ -41,6 +41,7 @@ struct AddCardCell: View {
             
             
             ZStack {
+                
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.white)
                     .frame(width: UIScreen.main.bounds.width - 60, height: 170)
@@ -54,7 +55,7 @@ struct AddCardCell: View {
                         Spacer()
                     }
                     .padding(.leading, 10)
-                    .font(.title2)
+                    .font(.title3)
                     .bold()
 
                     HStack {
@@ -100,9 +101,9 @@ struct AddCardCell: View {
             .gesture(
                 DragGesture()
                     .onChanged { value in
-                        if listX <= 0 && listX >= -90 { //-90보다 크고 0보다 작을 때
+                        if listX <= 0 && listX >= -20 { //-90보다 크고 0보다 작을 때
                             listX += value.translation.width / 30
-                            if listX <= -90 { // -90보다 작거나 같을 때
+                            if listX <= -20 { // -90보다 작거나 같을 때
                                 showingAlert = true
                                
                             }
