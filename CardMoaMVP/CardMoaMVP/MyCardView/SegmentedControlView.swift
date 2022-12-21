@@ -27,10 +27,10 @@ struct SegmentedControlView: View {
                 })
             }
             .padding(.horizontal)
-            .font(.title2)
+            //.font(.title2)
             .foregroundColor(Color.black)
             .background(Color.white)
-            .frame(width: 200, height: 30)
+            .frame(width: 180, height: 30)
             .bold()
         }
 
