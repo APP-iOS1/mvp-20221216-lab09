@@ -16,7 +16,7 @@ struct SelectCompanyView: View {
     @State var currentCompany: String = "삼성카드"
     @Binding var showingSheet: Bool
     var currentCompanyStore: CurrentCompanyStore
-    
+    @EnvironmentObject var vm : ViewModel
 
     //화면을 그리드형식으로 꽉채워줌
     let columns = [
