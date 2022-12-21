@@ -135,6 +135,7 @@ struct AddCardCell: View {
 
 struct AddCardCell_Previews: PreviewProvider {
     static var previews: some View {
-        AddCardCell(card: Card(name: "삼성 ID ON", imgName: "Samsung_iDON"))
+        AddCardCell(card: CardName(id: " ", cardImage: " ", cardName: " ", categorys:[]) ).environmentObject(ViewModel())
+
     }
 }
