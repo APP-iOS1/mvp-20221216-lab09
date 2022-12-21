@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct CardFrontView: View {
-//    var cardName: String
-    
-    var card : UserCard
-    
+    var cardName: String
     @Binding var degree : Double
     
     var body: some View {
@@ -20,21 +17,15 @@ struct CardFrontView: View {
                 .stroke()
                 .foregroundColor(Color(red: 220/255, green: 220/255, blue: 220/255))
                 .frame(width: 260, height: 400)
-            
-            AsyncImage(url:URL(string: card.cardImage ?? "")){ image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .clipped()
-                    .cornerRadius(15)
-                    .padding(.horizontal, 5)
-            } placeholder: {
-                Color.gray
-            }
-            .frame(width: 255, height: 400)
-                
-//            Image("\(card.cardImage)_L")
-                
+
+
+            Image("\(cardName)_L")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 260, height: 400)
+                .clipped()
+                .cornerRadius(15)
+                .padding(.horizontal, 5)
             
             VStack {
                 LinearGradient(gradient: Gradient(colors: [Color.clear, Color.white]),
@@ -46,7 +37,7 @@ struct CardFrontView: View {
             .frame(width: 260, height: 400, alignment: .bottom)
             
             HStack {
-                Text("\(card.cardName ?? "")")
+                Text("\(cardName)")
                     .font(.title3)
                     .bold()
                     .shadow(radius: 5)
@@ -69,9 +60,8 @@ struct CardFrontView: View {
     }
 }
 
-
 struct CardFrontView_Previews: PreviewProvider {
     static var previews: some View {
-        CardFrontView(card:UserCard(id: "", cardName: "taptapO", cardImage: "https://vertical.pstatic.net/vertical-cardad/creatives/SS/1530/SS_1530_hor.png"), degree: .constant(0))
+        CardFrontView(cardName: "Samsung_iDPET", degree: .constant(0))
     }
 }

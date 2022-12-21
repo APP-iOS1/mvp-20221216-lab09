@@ -20,22 +20,45 @@ struct TestCardList: View {
     var body: some View {
         VStack{
             Button {
-                //                vm.test_NH()
-//                vm.fetchCards(cardBrand: "test_NH")
-//                vm.addUsersData()
             } label: {
                 Text("button")
             }
             
             
+            HStack{
+                // 카드 브랜드 선택
+                Picker("카드선택", selection: $selectedCard) {
+                    ForEach(cardList, id: \.self){
+                        Text($0)
+                    }
+                }
+            }
+            // 카드가 보여줄 부분
+            ForEach(vm.cards){ index in
+                Text(index.id)
+            }
+            
+        }.onAppear{
+            vm.fetchCards(cardBrand: selectedCard)
+        }
+        .onChange(of: selectedCard) { newValue in           //newValue 모르겠음
+            vm.fetchCards(cardBrand: selectedCard)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                for i in vm.cards{
+                    vm.fetchCategorys(cardBrand: selectedCard, cardName: i.cardName)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                        print(vm.categorys)
+                    }
+                    
+                }
+            }
         }
     }
-    
 }
+
 struct TestCardList_Previews: PreviewProvider {
     static var previews: some View {
         TestCardList().environmentObject(ViewModel())
         //        TestCardList()
     }
 }
-

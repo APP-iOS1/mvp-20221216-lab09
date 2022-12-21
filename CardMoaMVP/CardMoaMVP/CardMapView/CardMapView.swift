@@ -69,15 +69,13 @@ struct CardMapView: View {
                             Image(systemName: "magnifyingglass").foregroundColor(.black)
                         }
                     }.padding().background(.white).cornerRadius(10).padding()
+                    CategoryButtons()
                     Spacer()
                 }
             }
-            .toolbarColorScheme(.dark, for: .tabBar)
-            .toolbarBackground(
-                Color.mainColor,
-                for: .tabBar
-            )
-            .toolbarBackground(.visible, for: .tabBar)
+
+            
+
         }
     }
 }

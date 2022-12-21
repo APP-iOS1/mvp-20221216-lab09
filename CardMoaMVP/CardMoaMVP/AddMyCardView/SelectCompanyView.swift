@@ -9,14 +9,15 @@ import SwiftUI
 
 struct SelectCompanyView: View {
     let data = Array(1...15).map { "name \($0)"}
+
     
     let cardCompany = ["현대카드" , "농협카드" ,"삼성카드" ,"신한카드", "카카오카드"]
-    
+
     @State var currentCompany: String = "삼성카드"
     @Binding var showingSheet: Bool
     var currentCompanyStore: CurrentCompanyStore
     
-    
+
     //화면을 그리드형식으로 꽉채워줌
     let columns = [
         //추가 하면 할수록 화면에 보여지는 개수가 변함
@@ -24,8 +25,6 @@ struct SelectCompanyView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    
-    @EnvironmentObject var vm : ViewModel
     
     var body: some View {
         VStack{
@@ -64,18 +63,37 @@ struct SelectCompanyView: View {
                         //                            }
                         //                        }
                         //                        .padding(.top, 40)
+                    //ForEach(0..<12) {i in
+                        //Button {
+                            //currentCompanyStore.companyName = names[i]
+                           // showingSheet.toggle()
+                       // } label: {
+                           // VStack {
+                             //   Image(logos[i])
+                             //       .resizable()
+                              //      .scaledToFit()
+                             //       .frame(height: 35)
+                             //   Text(names[i])
+                              //      .font(.footnote)
+                              //      .bold()
+                              //      .foregroundColor(.black)
+                           // }
+                       // }
+                     //   .padding(.top, 40)
+
                     }
                 }
+                .padding()
             }
-            .padding()
         }
     }
 }
 
 
-
 struct SelectCompanyView_Previews: PreviewProvider {
     static var previews: some View {
+
         SelectCompanyView(showingSheet: .constant(true), currentCompanyStore: CurrentCompanyStore()).environmentObject(ViewModel())
+
     }
 }

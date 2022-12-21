@@ -14,11 +14,12 @@ class CurrentCompanyStore: ObservableObject {
 struct AddMyCardView: View {
     @State private var segmentationSelection2 = 0
     @State private var company = "현대카드"
-    @State private var showingSheet = false
     @EnvironmentObject var vm : ViewModel
 
     @Binding var currentCompany: String
     @ObservedObject var currentCompanyStore = CurrentCompanyStore()
+
+    @State var showingSheet = false
 
     var body: some View {
         NavigationStack {
@@ -78,13 +79,10 @@ struct AddMyCardView: View {
                     
                         
                     //CardList
-                    ForEach(vm.cards) { card in
+                    ForEach(Card.cardList) { card in
                         VStack {
                             AddCardCell(card: card)
                             
-                        }
-                        .onAppear{
-                            vm.fetchCards(cardBrand: "test_NH")
                         }
                         .padding(.bottom, 30)
                     }
@@ -99,5 +97,6 @@ struct AddMyCardView_Previews: PreviewProvider {
 
     static var previews: some View {
         AddMyCardView(currentCompany: .constant("삼성카드")).environmentObject(ViewModel())
+
     }
 }
