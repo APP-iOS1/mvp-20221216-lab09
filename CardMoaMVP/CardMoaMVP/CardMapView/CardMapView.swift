@@ -62,14 +62,19 @@ struct CardMapView: View {
                 }.ignoresSafeArea(edges: .top)
                 VStack{
                     HStack{
-                        TextField("검색어를 입력해주세요", text: $search)
+                        TextField("위치 검색", text: $search)
                         Button {
                             searchString = search
                         } label: {
                             Image(systemName: "magnifyingglass").foregroundColor(.black)
                         }
-                    }.padding().background(.white).cornerRadius(10).padding()
+                    }.padding()
+                        .background(.white)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
                     CategoryButtons()
+                    // 패딩해서 띄워지기는 하나 스크롤하면 들어가는 부분이 이상하긴 함!
+                        .padding(.leading, 7)
                     Spacer()
                 }
             }
