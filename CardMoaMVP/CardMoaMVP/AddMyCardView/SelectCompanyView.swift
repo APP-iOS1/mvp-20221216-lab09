@@ -11,7 +11,7 @@ struct SelectCompanyView: View {
     let data = Array(1...15).map { "name \($0)"}
 
     
-    let cardCompany = ["현대카드" , "농협카드" ,"삼성카드" ,"신한카드", "카카오카드"]
+    let cardCompany = ["현대카드" , "NH농협카드" ,"삼성카드"]
 
     @State var currentCompany: String = "삼성카드"
     @Binding var showingSheet: Bool
@@ -30,60 +30,33 @@ struct SelectCompanyView: View {
         VStack{
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(cardCompany, id: \.self) {i in
-                        
+ 
+                    ForEach(0..<12) {i in
                         Button {
-                            //                            vm.fetchCards(cardBrand: i) //나중에 바꾸면 됨
-                            vm.fetchCards(cardBrand: "test_NH")
-                        } label: {
-                            VStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.lightGray)
-                                    .frame(width: 80, height: 80)
-                                Text(i)
+                            if cardCompany.contains(names[i]) {
+                                currentCompanyStore.companyName = names[i]
+                                vm.fetchCards(cardBrand: collections[i])
+                                showingSheet.toggle()
                             }
-                            
+ 
+                        } label: {
+                            VStack {
+                                Image(logos[i])
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 35)
+                                Text(names[i])
+                                    .font(.footnote)
+                                    .bold()
+                                    .foregroundColor(.black)
+                            }
                         }
+                        .padding(.top, 40)
                         
-                        
-                        //                    ForEach(company, id: \.self) {i in
-                        //                        Button {
-                        //                            currentCompanyStore.companyName = i
-                        //                            showingSheet.toggle()
-                        //                        } label: {
-                        //                            VStack {
-                        //                                Image(i)
-                        //                                    .resizable()
-                        //                                    .scaledToFit()
-                        //                                    .frame(height: 35)
-                        //                                Text(i)
-                        //                                    .font(.footnote)
-                        //                                    .bold()
-                        //                                    .foregroundColor(.black)
-                        //                            }
-                        //                        }
-                        //                        .padding(.top, 40)
-                    //ForEach(0..<12) {i in
-                        //Button {
-                            //currentCompanyStore.companyName = names[i]
-                           // showingSheet.toggle()
-                       // } label: {
-                           // VStack {
-                             //   Image(logos[i])
-                             //       .resizable()
-                              //      .scaledToFit()
-                             //       .frame(height: 35)
-                             //   Text(names[i])
-                              //      .font(.footnote)
-                              //      .bold()
-                              //      .foregroundColor(.black)
-                           // }
-                       // }
-                     //   .padding(.top, 40)
-
+                        //}
                     }
+                    .padding()
                 }
-                .padding()
             }
         }
     }

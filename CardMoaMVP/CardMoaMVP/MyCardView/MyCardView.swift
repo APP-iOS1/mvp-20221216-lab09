@@ -32,7 +32,9 @@ struct MyCardView: View {
                 HStack {
                     Spacer()
                     NavigationLink {
-                        AddMyCardView(currentCompany: $currentCompany)
+                        AddMyCardView(currentCompany: $currentCompany).onAppear{
+                            vm.fetchCards(cardBrand: "Samsung")
+                        }
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .resizable()

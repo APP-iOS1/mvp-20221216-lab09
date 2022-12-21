@@ -33,3 +33,6 @@ let logos = [ "samsung",
               "citi",
               "sc"]
 
+let collections = ["Samsung",
+                   "NH",
+                   "Hyundai"]

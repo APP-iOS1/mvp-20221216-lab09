@@ -60,7 +60,7 @@ struct AddCardCell: View {
                     .bold()
 
                     HStack {
-                        AsyncImage(url:URL(string:  card.cardImage)){ image in
+                        AsyncImage(url:URL(string: card.cardImage)){ image in
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -72,31 +72,33 @@ struct AddCardCell: View {
                             ForEach(Array(card.categorys.enumerated()), id: \.offset ){ index , object in
                                 if index < 4 {
                                     HStack {
-                                        switch card.categorys[index].category{
-                                        case "cafe":
-                                            Image(systemName: "cup.and.saucer.fill")
-                                            Text("카페/베이커리")
-                                        case "mart":
-                                            Image(systemName: "bag.fill")
-                                            Text("마트")
-                                        case "telephone":
-                                            Image(systemName: "phone.fill")
-                                            Text("통신")
-                                        case "medical":
-                                            Image(systemName: "cross.case.fill")
-                                            Text("의료")
-                                        case "leisure":
-                                            Image(systemName: "figure.disc.sports")
-                                            Text("레저")
-                                        case "shopping":
-                                            Image(systemName: "cart.fill")
-                                            Text("쇼핑")
-                                        case "cinema":
-                                            Image(systemName: "popcorn.fill")
-                                            Text("영화관")
-                                        default:
-                                            Image(systemName: "star.fill")
-                                        }
+                                        
+                                        Text(card.categorys[index].category)
+//                                        switch card.categorys[index].category{
+//                                        case "cafe":
+//                                            Image(systemName: "cup.and.saucer.fill")
+//                                            Text("카페/베이커리")
+//                                        case "mart":
+//                                            Image(systemName: "bag.fill")
+//                                            Text("마트")
+//                                        case "telephone":
+//                                            Image(systemName: "phone.fill")
+//                                            Text("통신")
+//                                        case "medical":
+//                                            Image(systemName: "cross.case.fill")
+//                                            Text("의료")
+//                                        case "leisure":
+//                                            Image(systemName: "figure.disc.sports")
+//                                            Text("레저")
+//                                        case "shopping":
+//                                            Image(systemName: "cart.fill")
+//                                            Text("쇼핑")
+//                                        case "cinema":
+//                                            Image(systemName: "popcorn.fill")
+//                                            Text("영화관")
+//                                        default:
+//                                            Image(systemName: "star.fill")
+//                                        }
                                         
                                     }
                                 }

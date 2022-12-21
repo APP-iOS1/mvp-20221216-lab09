@@ -20,6 +20,7 @@ struct TestCardList: View {
     var body: some View {
         VStack{
             Button {
+                vm.fetchCategorys(cardBrand: "Hyundai", cardName: "inflca")
             } label: {
                 Text("button")
             }

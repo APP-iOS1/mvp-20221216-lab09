@@ -24,23 +24,25 @@ class ViewModel : ObservableObject{
     // MARK: 회사 별 카드 종류
     func fetchCards(cardBrand: String){
         
-        var changeName : String = ""
-        switch cardBrand{
-        case "현대카드":
-            changeName = "Hyundai"
-        case "농렵카드":
-            changeName = "NH"
-        case "삼성카드":
-            changeName = "Samsung"
-        default:
-            changeName = ""
-            
-        }
-        
+//        var changeName : String = ""
+//        switch cardBrand{
+//        case "현대카드":
+//            changeName = "Hyundai"
+//        case "농협카드":
+//            changeName = "NH"
+//        case "삼성카드":
+//            changeName = "Samsung"
+//        default:
+//            changeName = ""
+//
+//        }
+//        print(changeName)
         //collection(cardBrand) < - (changeName)
+        
         database.collection(cardBrand).getDocuments { (snapshot , error) in
             self.cards.removeAll()
-            print(changeName)
+    
+            
             if let snapshot{
                 for document in snapshot.documents{
                     var arr : [TestDic] = []
@@ -55,9 +57,17 @@ class ViewModel : ObservableObject{
                     let categorys : [ Any ]  = docData["categorys"] as! [Any]
                     
                     for i in categorys{
-                        let categorys : [String:String] = i as! [String:String]
-                        let category : String = categorys["category"] as? String ?? ""
-                        let discount : String = categorys["discount"] as? String ?? ""
+                        let categorys : [String:String] = i as? [String:String] ?? [:]
+                        let category : String = categorys["category"] ?? ""
+//                        print(i)
+//                        print(type(of: i))
+                        let discount : String = categorys["discount"] ?? ""
+//                        let exception : String = categorys["exception"] ?? ""
+                        
+                        let store : [String] = categorys["store"] as? [String] ?? []
+//                        print("store: \(store)")
+//                        print(type(of: store))
+                        print(store)
                         arr.append(TestDic(category: category, discount: discount))
                     }
                     
@@ -83,7 +93,9 @@ class ViewModel : ObservableObject{
                     let docData = document.data()
                     
                     let discount : String = docData["discount"] as? String ?? ""
+//                    print(docData)
                     let store : Array<String> = docData["store"] as? Array<String> ?? []
+//                    print("store :\(store)")
                     let exception : String = docData["exception"] as? String ?? ""
                     let category : Catergory = Catergory(id: id, discount: discount, store: store, exceptionn: exception)
                     
@@ -142,3 +154,13 @@ class ViewModel : ObservableObject{
     
 }
 
+
+//store =     (
+//    starbucks,
+//    "\Ud22c\Uc378\Ud50c\Ub808\Uc774\Uc2a4",
+//    "\Uce74\Ud398\Ubca0\Ub124",
+//    "\Ud0d0\Uc564\Ud0d0\Uc2a4",
+//    "\Ucee4\Ud53c\Ube48",
+//    "\Ud560\Ub9ac\Uc2a4",
+//    "\Ud30c\Uc2a4\Ucfe0"
+//);

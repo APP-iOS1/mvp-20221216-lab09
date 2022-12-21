@@ -82,9 +82,10 @@ struct AddMyCardView: View {
                     ForEach(vm.cards) { card in
                         VStack {
                             AddCardCell(card: card)
-                        }.onAppear{
-                            vm.fetchCards(cardBrand: "test_NH")
                         }
+//                        .onAppear{ 
+//                            vm.fetchCards(cardBrand: "Samsung")    //모달을 내리면 계속 NH카드로 보여지는 거 같음
+//                        }
                         .padding(.bottom, 30)
                     }
                     .navigationTitle("카드 추가")

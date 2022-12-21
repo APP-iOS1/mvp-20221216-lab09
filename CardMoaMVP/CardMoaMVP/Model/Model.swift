@@ -18,6 +18,10 @@ struct Catergory :Identifiable,Hashable {
 struct TestDic :Hashable{
     var category: String
     var discount: String
+    
+    var exception : String?
+    var store : [String?]?
+    
 }
 // 메인페이지 유저 카드 보여줌
 struct UserCard:Identifiable,Hashable{
