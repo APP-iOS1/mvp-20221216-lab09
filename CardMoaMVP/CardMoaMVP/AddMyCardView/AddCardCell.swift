@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddCardListView: View {
+struct AddCardCell: View {
     @State var listX: CGFloat = 0
     var card: Card
     @State private var showingAlert: Bool = false
@@ -30,9 +30,9 @@ struct AddCardListView: View {
                         }
                         .padding(.trailing, 20)
                         
-                        Text(arrow)
+                        Image(systemName: "chevron.left.2")
                             .padding(3)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.mainColor)
                             .bold()
                             
                     }
@@ -132,8 +132,8 @@ struct AddCardListView: View {
 }
 
 
-struct AddCardListView_Previews: PreviewProvider {
+struct AddCardCell_Previews: PreviewProvider {
     static var previews: some View {
-        AddCardListView(card: Card(name: "삼성 ID ON", imgName: "Samsung_iDON"))
+        AddCardCell(card: Card(name: "삼성 ID ON", imgName: "Samsung_iDON"))
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct MyCardView: View {
     
     @State private var segmentationSelection = 0
+    @State var currentCompany = "삼성카드"
     
     var body: some View {
         NavigationStack {
@@ -26,7 +27,7 @@ struct MyCardView: View {
                 HStack {
                     Spacer()
                     NavigationLink {
-                        AddMyCardView()
+                        AddMyCardView(currentCompany: $currentCompany)
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .resizable()

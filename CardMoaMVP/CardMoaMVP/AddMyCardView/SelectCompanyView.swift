@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SelectCompanyView: View {
     let data = Array(1...15).map { "name \($0)"}
+    @State var currentCompany: String = "삼성카드"
+    @Binding var showingSheet: Bool
     
     //화면을 그리드형식으로 꽉채워줌
     let columns = [
@@ -22,13 +24,24 @@ struct SelectCompanyView: View {
         VStack{
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(data, id: \.self) {i in
-                        VStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.lightGray)
-                                .frame(width: 80, height: 80)
-                            Text(i)
+                    ForEach(company, id: \.self) {i in
+                        Button {
+                            currentCompany = i
+                            print(i)
+                            showingSheet.toggle()
+                        } label: {
+                            VStack {
+                                Image(i)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 35)
+                                Text(i)
+                                    .font(.footnote)
+                                    .bold()
+                                    .foregroundColor(.black)
+                            }
                         }
+                        .padding(.top, 40)
                     }
                 }
                 .padding()
@@ -40,6 +53,6 @@ struct SelectCompanyView: View {
 
 struct SelectCompanyView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectCompanyView()
+        SelectCompanyView(showingSheet: .constant(true))
     }
 }

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct AddMyCardView: View {
     @State private var segmentationSelection2 = 0
-    @State private var company = "현대카드"
-    @State private var showingSheet = false
+    @State var showingSheet = false
+    @Binding var currentCompany: String
     
     var body: some View {
         NavigationStack {
@@ -29,7 +29,7 @@ struct AddMyCardView: View {
                         } label: {
                             VStack {
                                 HStack {
-                                    Text(company)
+                                    Text(currentCompany)
                                         .font(.title2)
                                         .foregroundColor(.black)
                                         .bold()
@@ -48,7 +48,7 @@ struct AddMyCardView: View {
                         }
                         .sheet(isPresented: $showingSheet)
                         {
-                            SelectCompanyView()
+                            SelectCompanyView(showingSheet: $showingSheet)
                                 .presentationDetents([.height(550)])
                         }
                         
@@ -58,7 +58,7 @@ struct AddMyCardView: View {
                     //CardList
                     ForEach(Card.cardList) { card in
                         VStack {
-                            AddCardListView(card: card)
+                            AddCardCell(card: card)
                             
                         }
                         .padding(.bottom, 30)
@@ -71,7 +71,8 @@ struct AddMyCardView: View {
 }
 
 struct AddMyCardView_Previews: PreviewProvider {
+
     static var previews: some View {
-        AddMyCardView()
+        AddMyCardView(currentCompany: .constant("삼성카드"))
     }
 }
