@@ -21,6 +21,7 @@ struct CategoryButtons: View {
                         Text(i)
                     }.frame(width: 80, height: 45)
                         .foregroundColor(.black)
+                        .background(Color.white)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color.mainColor, lineWidth: 3)

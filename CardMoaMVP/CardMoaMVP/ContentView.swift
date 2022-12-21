@@ -12,8 +12,6 @@ struct ContentView: View {
         UITabBar.appearance().backgroundColor = UIColor(Color.white)
     }
     @EnvironmentObject var authModel : AuthViewModel
-    @EnvironmentObject var vm : ViewModel
-    
     var body: some View {
         if authModel.currentUser == nil{
             LoginView()
@@ -55,6 +53,6 @@ struct ContentView: View {
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(AuthViewModel()).environmentObject(ViewModel())
+        ContentView().environmentObject(AuthViewModel())
     }
 }
