@@ -13,15 +13,9 @@ class CurrentCompanyStore: ObservableObject {
 
 struct AddMyCardView: View {
     @State private var segmentationSelection2 = 0
-<<<<<<< HEAD
-    @State private var company = "현대카드"
-    @State private var showingSheet = false
-    @EnvironmentObject var vm : ViewModel
-=======
     @State var showingSheet = false
     @Binding var currentCompany: String
     @ObservedObject var currentCompanyStore = CurrentCompanyStore()
->>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734
     
     var body: some View {
         NavigationStack {
@@ -81,13 +75,10 @@ struct AddMyCardView: View {
                     
                         
                     //CardList
-                    ForEach(vm.cards) { card in
+                    ForEach(Card.cardList) { card in
                         VStack {
                             AddCardCell(card: card)
                             
-                        }
-                        .onAppear{
-                            vm.fetchCards(cardBrand: "test_NH")
                         }
                         .padding(.bottom, 30)
                     }
@@ -101,10 +92,6 @@ struct AddMyCardView: View {
 struct AddMyCardView_Previews: PreviewProvider {
 
     static var previews: some View {
-<<<<<<< HEAD
-        AddMyCardView().environmentObject(ViewModel())
-=======
         AddMyCardView(currentCompany: .constant("삼성카드"))
->>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734
     }
 }
