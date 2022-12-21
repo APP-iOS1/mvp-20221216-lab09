@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct CardFlipView: View {
-    var card: Card
+
+    var card : UserCard
+
     
     @State var backDegree = -90.0
     @State var frontDegree = 0.0
     @State var isFlipped = false
     
     let durationAndDelay : CGFloat = 0.3
-
+    @EnvironmentObject var vm : ViewModel
     var body: some View {
         ZStack {
             CardBackView(degree: $backDegree)
