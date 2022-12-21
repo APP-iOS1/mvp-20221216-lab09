@@ -13,6 +13,7 @@ struct MyCardView: View {
     @EnvironmentObject var vm : ViewModel
     @State var currentCompany = "삼성카드"
 
+
     
     var body: some View {
         NavigationStack {
@@ -23,9 +24,7 @@ struct MyCardView: View {
                             //.padding(.leading)
                         Spacer()
                     }
-                    CardPagingView().onAppear{
-                        vm.fetchUserData()
-                    }
+                    CardPagingView()
                 }
                 .padding(.bottom, 20)
                 HStack {
@@ -63,9 +62,9 @@ struct MyCardView: View {
     }
     
 }
-
+//test
 struct MyCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MyCardView().environmentObject(ViewModel())
+        MyCardView()
     }
 }
