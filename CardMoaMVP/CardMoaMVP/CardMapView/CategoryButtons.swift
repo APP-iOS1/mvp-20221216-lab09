@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CategoryButtons: View {
-    
     let category : [String] = ["외식", "카페", "대형마트", "편의점", "의료", "뷰티", "문화", "영화", "주유소"]
+//    @Binding var selectedCategory: Int
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
@@ -20,18 +20,14 @@ struct CategoryButtons: View {
                     } label: {
                         Text(i)
                     }
-                    // 1번 방식 - background색이 캡슐 모양 밖으로도 생김.. ㅜ
-                    //                    .frame(width: 80, height: 45)
-                    //                    .foregroundColor(.black)
-                    //                    .background(Color.yellow)
-                    //                    .overlay(
-                    //                        Capsule().stroke(Color.mainColor, lineWidth: 3)
-                    //                    )
-                    //                    .padding(.vertical, 4)
-                    
-                    // 버튼 클릭시 색 변하는 것 참고하기
-                    //                    .foregroundColor(selectedCategory == index ? .white : .black)
-                    //                    .tint(selectedCategory == index ? Color.accentColor : .white)
+             //        1번 방식 - background색이 캡슐 모양 밖으로도 생김.. ㅜ
+//                                        .frame(width: 80, height: 45)
+//                                        .foregroundColor(.black)
+//                                        .background(Color.yellow)
+//                                        .overlay(
+//                                            Capsule().stroke(Color.mainColor, lineWidth: 3)
+//                                        )
+//                                        .padding(.vertical, 4)
                     
                     // 2번 방식
                     .frame(width: 80, height: 40)
@@ -41,11 +37,15 @@ struct CategoryButtons: View {
                     .cornerRadius(20)
                     .shadow(radius: 2)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 20).stroke(Color.mainColor, lineWidth: 3)
+                        RoundedRectangle(cornerRadius: 20).stroke(Color.mainColor, lineWidth: 2)
+                            .shadow(radius: 2, x: 0, y: 3)
                     )
                     .padding(.leading, 3)
                     .padding(.vertical, 6)
-                    .shadow(radius: 2, x: 2, y: 2)
+//                    .shadow(radius: 3)
+                    // 버튼 클릭시 색 변하는 것 참고하기
+//                    .foregroundColor(selectedCategory == i ? .white : .black)
+//                    .tint(selectedCategory == i ? Color.accentColor : .white)
                     
                 }
             }
