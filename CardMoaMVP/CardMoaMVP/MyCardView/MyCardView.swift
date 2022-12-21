@@ -10,11 +10,7 @@ import SwiftUI
 struct MyCardView: View {
     
     @State private var segmentationSelection = 0
-<<<<<<< HEAD
-    @EnvironmentObject var vm : ViewModel
-=======
     @State var currentCompany = "삼성카드"
->>>>>>> 151f04475636d6d13b05ff77e82e74b735e26734
     
     var body: some View {
         NavigationStack {
@@ -25,9 +21,7 @@ struct MyCardView: View {
                             //.padding(.leading)
                         Spacer()
                     }
-                    CardPagingView().onAppear{
-                        vm.fetchUserData()
-                    }
+                    CardPagingView()
                 }
                 .padding(.bottom, 20)
                 HStack {
@@ -68,6 +62,6 @@ struct MyCardView: View {
 
 struct MyCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MyCardView().environmentObject(ViewModel())
+        MyCardView()
     }
 }
