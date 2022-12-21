@@ -24,9 +24,7 @@ struct MyCardView: View {
                             //.padding(.leading)
                         Spacer()
                     }
-                    CardPagingView().onAppear{
-                        vm.fetchUserData()
-                    }
+                    CardPagingView()
                 }
                 .padding(.bottom, 20)
                 HStack {
@@ -67,6 +65,6 @@ struct MyCardView: View {
 //test
 struct MyCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MyCardView().environmentObject(ViewModel())
+        MyCardView()
     }
 }

@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CardFlipView: View {
+
     var card : UserCard
+
     
     @State var backDegree = -90.0
     @State var frontDegree = 0.0
@@ -19,7 +21,7 @@ struct CardFlipView: View {
     var body: some View {
         ZStack {
             CardBackView(degree: $backDegree)
-            CardFrontView(card: card, degree: $frontDegree)
+            CardFrontView(cardName: card.imgName, degree: $frontDegree)
             //if backDegree == 0 { //값이 0 됐을 떄 뿅! 나와서 어색해 보였던 듯?
             
             //}
@@ -52,6 +54,6 @@ struct CardFlipView: View {
 
 struct CardFlipView_Previews: PreviewProvider {
     static var previews: some View {
-        CardFlipView(card:UserCard(id: "", cardName: "taptapO", cardImage: "https://vertical.pstatic.net/vertical-cardad/creatives/SS/1530/SS_1530_hor.png"))
+        CardFlipView(card: Card(name: "삼성 ID ON", imgName: "Samsung_iDON"))
     }
 }

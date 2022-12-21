@@ -79,11 +79,13 @@ struct AddMyCardView: View {
                     
                         
                     //CardList
-                    ForEach(vm.cards) { card in
+                    ForEach(Card.cardList) { card in
                         VStack {
                             AddCardCell(card: card)
+
                         }.onAppear{
                             vm.fetchCards(cardBrand: "test_NH")
+
                         }
                         .padding(.bottom, 30)
                     }
