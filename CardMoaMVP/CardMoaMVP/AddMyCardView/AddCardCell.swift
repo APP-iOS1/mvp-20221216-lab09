@@ -9,10 +9,7 @@ import SwiftUI
 
 struct AddCardCell: View {
     @State var listX: CGFloat = 0
-
-    var card: CardName
-    @EnvironmentObject var vm : ViewModel
-
+    var card: Card
     @State private var showingAlert: Bool = false
     @State private var arrow: String = "<<"
     
@@ -62,15 +59,10 @@ struct AddCardCell: View {
                     .bold()
 
                     HStack {
-
-                        AsyncImage(url:URL(string:  card.cardImage)){ image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } placeholder: {
-                            Color.clear
-                        }
-                        .frame(height: 100)
+                        Image("\(card.imgName)_B")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 100)
 
                         VStack(alignment: .leading) {
                             HStack {
@@ -132,8 +124,6 @@ struct AddCardCell: View {
                 Button("OK") {
                     listX = 0
                     arrow = "<<"
-//                    vm.addUsersData(cardName: card.cardName, cardImage: card.cardImage)
-
                 }
                 
             }
@@ -142,8 +132,10 @@ struct AddCardCell: View {
     } // ZStack1
 }
 
+
 struct AddCardCell_Previews: PreviewProvider {
     static var previews: some View {
         AddCardCell(card: CardName(id: " ", cardImage: " ", cardName: " ", categorys:[]) ).environmentObject(ViewModel())
+
     }
 }

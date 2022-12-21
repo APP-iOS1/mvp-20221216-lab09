@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct CardFrontView: View {
-
-    var card : UserCard
-    
-
+    var cardName: String
     @Binding var degree : Double
     
     var body: some View {
@@ -22,19 +19,13 @@ struct CardFrontView: View {
                 .frame(width: 260, height: 400)
 
 
-
-            AsyncImage(url:URL(string: card.cardImage ?? "")){ image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .clipped()
-                    .cornerRadius(15)
-                    .padding(.horizontal, 5)
-            } placeholder: {
-                Color.gray
-            }
-            .frame(width: 255, height: 400)
-
+            Image("\(cardName)_L")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 260, height: 400)
+                .clipped()
+                .cornerRadius(15)
+                .padding(.horizontal, 5)
             
             VStack {
                 LinearGradient(gradient: Gradient(colors: [Color.clear, Color.white]),

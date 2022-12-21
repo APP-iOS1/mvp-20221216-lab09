@@ -9,17 +9,12 @@ import SwiftUI
 import CollectionViewPagingLayout
 
 struct CardPagingView: View {
-
-    @EnvironmentObject var vm : ViewModel
-
     var options: ScaleTransformViewOptions {
         .layout(.linear)
     }
     
     var body: some View {
-
-        ScalePageView(vm.userCards) { card in
-
+        ScalePageView(Card.cardList) { card in
             CardFlipView(card: card)
         }
         .options(options)
