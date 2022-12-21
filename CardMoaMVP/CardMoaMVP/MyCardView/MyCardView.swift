@@ -62,7 +62,7 @@ struct MyCardView: View {
     }
     
 }
-//test
+
 struct MyCardView_Previews: PreviewProvider {
     static var previews: some View {
         MyCardView()

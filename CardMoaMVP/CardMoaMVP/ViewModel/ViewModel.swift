@@ -1,3 +1,10 @@
+//
+//  ViewModel.swift
+//  CardMoaMVP
+//
+//  Created by 지정훈 on 2022/12/20.
+//
+
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
@@ -65,48 +72,47 @@ class ViewModel : ObservableObject{
         }
         print(categorys)
     }
-    func fetchUserData(){
-        print("출력 완료")
-        database.collection("Users").getDocuments { snapshot, error in
-            self.userCards.removeAll()
-            if let snapshot{
-                for document in snapshot.documents{
-                    
-                    let id : String = document.documentID   //카드 이름
-                    let docData = document.data()
-                    
-                    //최근 검색어
-                    let currentSearch : [String] = docData["currentSearch"] as? [String] ?? []
-                    let myCard : [ Any ]  = docData["myCard"] as! [Any]
-                    
-                    for i in myCard{
-                        let myCard : [String:String] = i as! [String:String]
-                        let cardImage : String = myCard["cardImage"] as? String ?? ""
-                        let cardName : String = myCard["cardName"] as? String ?? ""
-                        
-                        //                        self.userCards.append(UserCard(cardName: cardName, cardImage: cardImage))
-                        self.userCards.append(UserCard(id: UUID().uuidString, cardName: cardName, cardImage: cardImage))
-                    }
-                }
-            }
-        }
-    }
-    // MARK: 유저데이터에 카드, 최근 검색 저장
-    func addUsersData(cardName: String, cardImage: String){
-        let authId = Auth.auth().currentUser?.uid ?? ""
-
-        
-        let mycard = UsersMyCard(currentSearch: ["테스트"], myCard: [MyCard(cardName: cardName, cardImage: cardImage)])
-        
-        database.collection("Users").document(authId).setData(mycard as! [String : Any]){ error in
-            
-            if let error = error {
-                print(error)
-                return
-            }
-            print("success")
-        }
-    }
+    
+//    func allFetch(cardBrand: String){
+//        let allDB = database.collection(cardBrand)
+//        
+//        allDB.getDocuments { (snapshot , error) in
+//            if let snapshot{
+//                for document in snapshot.documents{
+//                    let id: String = document.documentID
+//                    print("first id : \(id)")
+//                    
+//                    
+//                    let allInDB = self.database.collection(cardBrand).document(id).collection("Category")
+//                    allInDB.getDocuments { (snapshot , error) in
+//                        if let snapshot{
+//                            for document in snapshot.documents{
+//                                
+//                                let id: String = document.documentID
+//                                print("id:\(id)")
+//                                let docData = document.data()
+//                                
+//                                let discount : String = docData["discount"] as? String ?? ""
+//                                let store : Array<String> = docData["store"] as? Array<String> ?? []
+//                                let exception : String = docData["exception"] as? String ?? ""
+//                                let allFetch : Catergory = Catergory(id: id, discount: discount, store: store, exceptionn: exception)
+//                                
+//                                self.allFetch.append(allFetch)
+//                
+//                            }
+//                            
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//            
+//        }
+//        
+//        
+//        
+//    }
+    
 
 }
 
