@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AddCardCell: View {
     @State var listX: CGFloat = 0
-    var card: Card
+    var card: CardName
+    @EnvironmentObject var vm : ViewModel
     @State private var showingAlert: Bool = false
     @State private var arrow: String = "<<"
     
@@ -51,7 +52,7 @@ struct AddCardCell: View {
 
                 VStack {
                     HStack {
-                        Text("\(card.name)")
+                        Text("\(card.cardName)")
                         Spacer()
                     }
                     .padding(.leading, 10)
@@ -59,30 +60,66 @@ struct AddCardCell: View {
                     .bold()
 
                     HStack {
-                        Image("\(card.imgName)_B")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 100)
-
+                        AsyncImage(url:URL(string:  card.cardImage)){ image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        } placeholder: {
+                            Color.clear
+                        }
+                        .frame(height: 100)
                         VStack(alignment: .leading) {
-                            HStack {
-                                Image(systemName: "ticket")
-                                Text("연회비 지원")
+                            ForEach(Array(card.categorys.enumerated()), id: \.offset ){ index , object in
+                                if index < 4 {
+                                    HStack {
+                                        switch card.categorys[index].category{
+                                        case "cafe":
+                                            Image(systemName: "cup.and.saucer.fill")
+                                            Text("카페/베이커리")
+                                        case "mart":
+                                            Image(systemName: "bag.fill")
+                                            Text("마트")
+                                        case "telephone":
+                                            Image(systemName: "phone.fill")
+                                            Text("통신")
+                                        case "medical":
+                                            Image(systemName: "cross.case.fill")
+                                            Text("의료")
+                                        case "leisure":
+                                            Image(systemName: "figure.disc.sports")
+                                            Text("레저")
+                                        case "shopping":
+                                            Image(systemName: "cart.fill")
+                                            Text("쇼핑")
+                                        case "cinema":
+                                            Image(systemName: "popcorn.fill")
+                                            Text("영화관")
+                                        default:
+                                            Image(systemName: "star.fill")
+                                        }
+                                        
+                                    }
+                                }
+                              
                             }
-                            HStack {
-                                Image(systemName: "fork.knife")
-                                    .padding(.leading, 2)
-                                Text("외식 & 베이커리")
-                                    .padding(.leading, 4)
-                            }
-                            HStack {
-                                Image(systemName: "bus")
-                                Text("교통")
-                            }
-                            HStack {
-                                Image(systemName: "cart.fill")
-                                Text("쇼핑")
-                            }
+//                            HStack {
+//                                Image(systemName: "ticket")
+//                                Text("\(card.categorys[0].category)")
+//                            }
+//                            HStack {
+//                                Image(systemName: "fork.knife")
+//                                    .padding(.leading, 2)
+//                                Text("외식 & 베이커리")
+//                                    .padding(.leading, 4)
+//                            }
+//                            HStack {
+//                                Image(systemName: "bus")
+//                                Text("교통")
+//                            }
+//                            HStack {
+//                                Image(systemName: "cart.fill")
+//                                Text("쇼핑")
+//                            }
                         }
                         .padding(8)
                         .overlay(
@@ -124,6 +161,7 @@ struct AddCardCell: View {
                 Button("OK") {
                     listX = 0
                     arrow = "<<"
+//                    vm.addUsersData(cardName: card.cardName, cardImage: card.cardImage)
                 }
                 
             }
@@ -132,10 +170,8 @@ struct AddCardCell: View {
     } // ZStack1
 }
 
-//
-//struct AddCardCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddCardCell(card: CardName(id: " ", cardImage: " ", cardName: " ", categorys:[]) ).environmentObject(ViewModel())
-//
-//    }
-//}
+struct AddCardCell_Previews: PreviewProvider {
+    static var previews: some View {
+        AddCardCell(card: CardName(id: " ", cardImage: " ", cardName: " ", categorys:[]) ).environmentObject(ViewModel())
+    }
+}
