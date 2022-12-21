@@ -18,7 +18,6 @@ struct SelectCompanyView: View {
     var currentCompanyStore: CurrentCompanyStore
     @EnvironmentObject var vm : ViewModel
 
-
     //화면을 그리드형식으로 꽉채워줌
     let columns = [
         //추가 하면 할수록 화면에 보여지는 개수가 변함

@@ -37,7 +37,7 @@ struct TestCardList: View {
             ForEach(vm.cards){ index in
                 Text(index.id)
             }
-            //
+            
         }.onAppear{
             vm.fetchCards(cardBrand: selectedCard)
         }

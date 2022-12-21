@@ -6,23 +6,44 @@ import Firebase
 class ViewModel : ObservableObject{
     @Published var cards : [CardName] = []
     @Published var categorys : [Catergory] = []
-    @Published var allFetch : [Catergory] = []
+    
+    @Published var userCards : [UserCard] = []
+    
+    //    @Published var allFetch : [TestDic] = []
+    
     let database = Firestore.firestore()
     
     
     init(){
         cards = []
         categorys = []
-        allFetch = []
+        //        allFetch = []
+        userCards = []
     }
     
     // MARK: 회사 별 카드 종류
     func fetchCards(cardBrand: String){
+        
+        var changeName : String = ""
+        switch cardBrand{
+        case "현대카드":
+            changeName = "Hyundai"
+        case "농렵카드":
+            changeName = "NH"
+        case "삼성카드":
+            changeName = "Samsung"
+        default:
+            changeName = ""
+            
+        }
+        
+        //collection(cardBrand) < - (changeName)
         database.collection(cardBrand).getDocuments { (snapshot , error) in
             self.cards.removeAll()
+            print(changeName)
             if let snapshot{
                 for document in snapshot.documents{
-                    
+                    var arr : [TestDic] = []
                     let id: String = document.documentID
                     
                     
@@ -30,15 +51,25 @@ class ViewModel : ObservableObject{
                     
                     let cardImage : String = docData["cardImage"] as? String ?? ""
                     
-                    let card : CardName = CardName(id: id, cardImage: cardImage, cardName: id)
-
+                    //test_nh
+                    let categorys : [ Any ]  = docData["categorys"] as! [Any]
+                    
+                    for i in categorys{
+                        let categorys : [String:String] = i as! [String:String]
+                        let category : String = categorys["category"] as? String ?? ""
+                        let discount : String = categorys["discount"] as? String ?? ""
+                        arr.append(TestDic(category: category, discount: discount))
+                    }
+                    
+                    
+                    let card : CardName = CardName(id: id, cardImage: cardImage, cardName: id,categorys: arr)
+                    
                     self.cards.append(card)
                     
                 }
-                
             }
-            
         }
+        print(cards)
     }
     // MARK: 카드 별 혜택 정보 가져오기
     func fetchCategorys(cardBrand: String, cardName: String ){
@@ -57,7 +88,7 @@ class ViewModel : ObservableObject{
                     let category : Catergory = Catergory(id: id, discount: discount, store: store, exceptionn: exception)
                     
                     self.categorys.append(category)
-                   
+                    
                 }
                 
             }
@@ -107,6 +138,7 @@ class ViewModel : ObservableObject{
             print("success")
         }
     }
-
+    
+    
 }
 
