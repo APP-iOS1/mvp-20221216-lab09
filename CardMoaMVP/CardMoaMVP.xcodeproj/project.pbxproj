@@ -29,6 +29,8 @@
 		A7B61E942951DDD1000272A4 /* CardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B61E8C2951DDD1000272A4 /* CardFrontView.swift */; };
 		A7B61E952951DDD1000272A4 /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B61E8D2951DDD1000272A4 /* CardBackView.swift */; };
 		A7B61E962951DDD1000272A4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B61E8F2951DDD1000272A4 /* Card.swift */; };
+		A85AAAD92952A99E00570747 /* NoCardResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85AAAD82952A99E00570747 /* NoCardResultView.swift */; };
+		A85AAADB2952AB3B00570747 /* CardResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85AAADA2952AB3B00570747 /* CardResultView.swift */; };
 		D7BEFD8A29505A96001D4AED /* CardMoaMVPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFD8929505A96001D4AED /* CardMoaMVPApp.swift */; };
 		D7BEFD8C29505A96001D4AED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFD8B29505A96001D4AED /* ContentView.swift */; };
 		D7BEFD8E29505A97001D4AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7BEFD8D29505A97001D4AED /* Assets.xcassets */; };
@@ -64,6 +66,8 @@
 		A7B61E8C2951DDD1000272A4 /* CardFrontView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFrontView.swift; sourceTree = "<group>"; };
 		A7B61E8D2951DDD1000272A4 /* CardBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
 		A7B61E8F2951DDD1000272A4 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		A85AAAD82952A99E00570747 /* NoCardResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCardResultView.swift; sourceTree = "<group>"; };
+		A85AAADA2952AB3B00570747 /* CardResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardResultView.swift; sourceTree = "<group>"; };
 		D7BEFD8629505A96001D4AED /* CardMoaMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardMoaMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7BEFD8929505A96001D4AED /* CardMoaMVPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMoaMVPApp.swift; sourceTree = "<group>"; };
 		D7BEFD8B29505A96001D4AED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -131,9 +135,11 @@
 		A7B61E7E2951DDC5000272A4 /* BenefitSearch */ = {
 			isa = PBXGroup;
 			children = (
+				A7B61E812951DDC5000272A4 /* BenefitSearchView.swift */,
 				A7B61E7F2951DDC5000272A4 /* BenefitCategoryView.swift */,
 				A7B61E802951DDC5000272A4 /* BenefitCategoryDetailView.swift */,
-				A7B61E812951DDC5000272A4 /* BenefitSearchView.swift */,
+				A85AAAD82952A99E00570747 /* NoCardResultView.swift */,
+				A85AAADA2952AB3B00570747 /* CardResultView.swift */,
 			);
 			path = BenefitSearch;
 			sourceTree = "<group>";
@@ -287,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A85AAADB2952AB3B00570747 /* CardResultView.swift in Sources */,
 				A71F699B29515185006CF5CE /* LoginView.swift in Sources */,
 				A7B61E822951DDC5000272A4 /* BenefitCategoryView.swift in Sources */,
 				A7B61E7C2951DDC1000272A4 /* SelectCompanyView.swift in Sources */,
@@ -297,6 +304,7 @@
 				A7B61E7B2951DDC1000272A4 /* AddCardListView.swift in Sources */,
 				A7B61E7D2951DDC1000272A4 /* AddMyCardView.swift in Sources */,
 				A71F699D2951524B006CF5CE /* SignUpView.swift in Sources */,
+				A85AAAD92952A99E00570747 /* NoCardResultView.swift in Sources */,
 				A7B61E842951DDC5000272A4 /* BenefitSearchView.swift in Sources */,
 				A7B61E942951DDD1000272A4 /* CardFrontView.swift in Sources */,
 				A71F699F29515586006CF5CE /* AuthViewModel.swift in Sources */,
