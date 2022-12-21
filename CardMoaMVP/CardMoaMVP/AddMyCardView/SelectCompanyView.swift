@@ -25,17 +25,17 @@ struct SelectCompanyView: View {
         VStack{
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 20) {
-                    ForEach(company, id: \.self) {i in
+                    ForEach(0..<12) {i in
                         Button {
-                            currentCompanyStore.companyName = i
+                            currentCompanyStore.companyName = names[i]
                             showingSheet.toggle()
                         } label: {
                             VStack {
-                                Image(i)
+                                Image(logos[i])
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: 35)
-                                Text(i)
+                                Text(names[i])
                                     .font(.footnote)
                                     .bold()
                                     .foregroundColor(.black)
@@ -53,6 +53,6 @@ struct SelectCompanyView: View {
 
 struct SelectCompanyView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectCompanyView(showingSheet: .constant(true), currentCompanyStore: CurrentCompanyStore() )
+        SelectCompanyView(showingSheet: .constant(true), currentCompanyStore: CurrentCompanyStore())
     }
 }
