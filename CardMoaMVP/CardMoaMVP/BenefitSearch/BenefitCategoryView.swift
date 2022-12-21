@@ -45,30 +45,67 @@ struct BenefitCategoryView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    let roundRectangle : RoundRectangle = RoundRectangle()
     
     var body: some View {
         NavigationStack{
             VStack{
-                HStack{
-                    Text("혜택 모아보기")
-                        .font(.title3)
-                        .padding(.leading, 20)
-                        .padding(.top)
-                        .fontWeight(.bold)
-                    Spacer()
-                }
-                
-                LazyVGrid(columns: columns, spacing: 20) {
-                    
-                    ForEach(items) {item in
-                        NavigationLink {
-                            BenefitCategoryDetailView()
+                ScrollView{
+                    HStack {
+                        Text("최근 검색어")
+                            .font(.title3).padding(.leading, 20).fontWeight(.bold)
+                        Spacer()
+                        Button {
+                            // ???: - 배민 참고해서 만듦, 배민에서는 전체삭제하면 최근검색어hstack자체가 없어지긴 함..! 어떻게 할지?
                         } label: {
-                            ItemView(item: item)
+                            Text("전체삭제")
+                                .font(.subheadline)
+                                .padding(EdgeInsets(top: 7, leading: 10, bottom: 7, trailing: 10))
+                                .background(Color.lightGray)
+                                .foregroundColor(Color.black)
+                                .cornerRadius(30)
+                                .padding(.trailing, 20)
                         }
                     }
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack{
+                            Button {
+                                // 최근검색어에 있는 버튼 클릭시 검색(돋보기)버튼과 같은 맥락
+                            } label: {
+                                Text("파리바게뜨").modifier(roundRectangle)
+                                //                                Text("롯데월드").modifier(roundRectangle)
+                                //                                Text("교보문고").modifier(roundRectangle)
+                                //                                Text("스타벅스").modifier(roundRectangle)
+                                //                                Text("커피빈").modifier(roundRectangle)
+                                //                                Text("아웃백").modifier(roundRectangle)
+                                //                        Text("쿠팡").modifier(roundRectangle)
+                                //                        Text("버거킹").modifier(roundRectangle)
+                            }
+                        }
+                    }.padding(.leading)
+                    
+                    Rectangle().frame(height : 10).foregroundColor(.lightGray).padding([.top])
+                    HStack{
+                        Text("혜택 모아보기")
+                            .font(.title3)
+                            .padding(.leading, 20)
+                            .padding(.top)
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        
+                        ForEach(items) {item in
+                            NavigationLink {
+                                BenefitCategoryDetailView()
+                            } label: {
+                                ItemView(item: item)
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
+                
             }
         }
     }
@@ -88,10 +125,7 @@ struct ItemView: View {
                             .scaledToFit()
                             .frame(width: 30, height: 30)
                     )
-                //                                Image(systemName: item.image)
-                //                                    .resizable()
-                //                                    .scaledToFit()
-                //                                    .frame(width: 40, height: 40)
+                
                 Text(item.title)
                     .padding(.top, 3)
                 //                    .font(.system(size: 20))
@@ -102,6 +136,12 @@ struct ItemView: View {
             .foregroundColor(.black)
         }
         .frame(height: 90)
+    }
+}
+
+struct RoundRectangle : ViewModifier {
+    func body(content: Content) -> some View {
+        content.padding(EdgeInsets(top: 7, leading: 10, bottom: 7, trailing: 10)).background(Color.lightPink).cornerRadius(30).foregroundColor(.mainColor).fontWeight(.semibold)
     }
 }
 
