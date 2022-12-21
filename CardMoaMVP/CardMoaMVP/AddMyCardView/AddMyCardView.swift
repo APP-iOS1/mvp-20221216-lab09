@@ -11,6 +11,7 @@ struct AddMyCardView: View {
     @State private var segmentationSelection2 = 0
     @State private var company = "현대카드"
     @State private var showingSheet = false
+    @EnvironmentObject var vm : ViewModel
     
     var body: some View {
         NavigationStack {
@@ -56,10 +57,13 @@ struct AddMyCardView: View {
                     .padding(.bottom, 40)
                     
                     //CardList
-                    ForEach(Card.cardList) { card in
+                    ForEach(vm.cards) { card in
                         VStack {
                             AddCardListView(card: card)
                             
+                        }
+                        .onAppear{
+                            vm.fetchCards(cardBrand: "test_NH")
                         }
                         .padding(.bottom, 30)
                     }
@@ -72,6 +76,6 @@ struct AddMyCardView: View {
 
 struct AddMyCardView_Previews: PreviewProvider {
     static var previews: some View {
-        AddMyCardView()
+        AddMyCardView().environmentObject(ViewModel())
     }
 }

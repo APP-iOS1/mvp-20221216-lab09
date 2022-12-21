@@ -7,6 +7,13 @@ struct Card: Identifiable {
     var imgName: String
 }
 
+//struct UserCard:Identifiable,Hashable{
+//    var id : String
+//    var cardName : String
+//    var cardImage : String
+//}
+
+
 extension Card {
     static var cardList: [Card] = [
         Card(name: "삼성 ID ON", imgName: "Samsung_iDON"),
