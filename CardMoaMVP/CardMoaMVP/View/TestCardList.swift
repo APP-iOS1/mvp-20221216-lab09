@@ -21,7 +21,8 @@ struct TestCardList: View {
         VStack{
             Button {
                 //                vm.test_NH()
-                vm.fetchCards(cardBrand: "test_NH")
+//                vm.fetchCards(cardBrand: "test_NH")
+//                vm.addUsersData()
             } label: {
                 Text("button")
             }

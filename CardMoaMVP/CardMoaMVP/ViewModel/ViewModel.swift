@@ -16,15 +16,15 @@ class ViewModel : ObservableObject{
     
     @Published var userCards : [UserCard] = []
     
-//    @Published var allFetch : [TestDic] = []
-
+    //    @Published var allFetch : [TestDic] = []
+    
     let database = Firestore.firestore()
     
     
     init(){
         cards = []
         categorys = []
-//        allFetch = []
+        //        allFetch = []
         userCards = []
     }
     
@@ -44,8 +44,8 @@ class ViewModel : ObservableObject{
             
         }
         
-        //collection(cardBrand) < - (changeName) 바꾸기
-        database.collection("test_NH").getDocuments { (snapshot , error) in
+        //collection(cardBrand) < - (changeName)
+        database.collection(cardBrand).getDocuments { (snapshot , error) in
             self.cards.removeAll()
             print(changeName)
             if let snapshot{
@@ -129,30 +129,25 @@ class ViewModel : ObservableObject{
             }
         }
     }
-    func test_NH(){
-        database.collection("test_NH").getDocuments { snapshot, error in
-            if let snapshot{
-                for document in snapshot.documents{
-                    
-                    let id : String = document.documentID   //카드 이름
-                    let docData = document.data()
-                    
-                    let cardImage : String = docData["cardImage"] as? String ?? ""
-                    let categorys : [ Any ]  = docData["categorys"] as! [Any]
-                    
-                    for i in categorys{
-                        let categorys : [String:String] = i as! [String:String]
-                        let category : String = categorys["category"] as? String ?? ""
-                        let discount : String = categorys["discount"] as? String ?? ""
-                        
-                        //                            self.allFetch.append(testDic(category: category, discount: discount))
-                        
-                    }
-                }
-            }
-        }
+    // MARK: 유저데이터에 카드, 최근 검색 저장
+    func addUsersData(cardName: String, cardImage: String){
+        let authId = Auth.auth().currentUser?.uid ?? ""
+
         
-//        print(allFetch)
+        let mycard = UsersMyCard(currentSearch: ["테스트"], myCard: [MyCard(cardName: cardName, cardImage: cardImage)])
+        
+        database.collection("Users").document(authId).setData(mycard as! [String : Any]){ error in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            print("success")
+        }
     }
+    
+    
 }
+
+
 

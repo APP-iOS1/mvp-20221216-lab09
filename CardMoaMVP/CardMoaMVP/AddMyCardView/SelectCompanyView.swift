@@ -27,7 +27,8 @@ struct SelectCompanyView: View {
                     ForEach(cardCompany, id: \.self) {i in
                         
                         Button {
-                            vm.fetchCards(cardBrand: i)
+                            //                            vm.fetchCards(cardBrand: i) //나중에 바꾸면 됨
+                            vm.fetchCards(cardBrand: "test_NH")
                         } label: {
                             VStack{
                                 RoundedRectangle(cornerRadius: 20)

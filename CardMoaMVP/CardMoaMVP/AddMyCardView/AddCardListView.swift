@@ -161,6 +161,7 @@ struct AddCardListView: View {
                 Button("OK") {
                     listX = 0
                     arrow = "<<"
+                    vm.addUsersData(cardName: card.cardName, cardImage: card.cardImage)
                 }
                 
             }

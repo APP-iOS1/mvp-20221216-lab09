@@ -21,7 +21,7 @@ struct CardFrontView: View {
                 .foregroundColor(Color(red: 220/255, green: 220/255, blue: 220/255))
                 .frame(width: 260, height: 400)
             
-            AsyncImage(url:URL(string: card.cardImage)){ image in
+            AsyncImage(url:URL(string: card.cardImage ?? "")){ image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -46,7 +46,7 @@ struct CardFrontView: View {
             .frame(width: 260, height: 400, alignment: .bottom)
             
             HStack {
-                Text("\(card.cardName)")
+                Text("\(card.cardName ?? "")")
                     .font(.title3)
                     .bold()
                     .shadow(radius: 5)
