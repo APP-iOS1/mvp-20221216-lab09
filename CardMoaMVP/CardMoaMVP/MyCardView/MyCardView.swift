@@ -22,10 +22,12 @@ struct MyCardView: View {
                 VStack {
                     HStack {
                         SegmentedControlView(currentTab: $segmentationSelection)
-                            //.padding(.leading)
+                            .padding(.top)
                         Spacer()
                     }
-                    CardPagingView().onAppear{
+                    CardPagingView()
+                        .padding(.bottom, 30)
+                        .onAppear{
                         vm.fetchUserData()
                     }
                 }
