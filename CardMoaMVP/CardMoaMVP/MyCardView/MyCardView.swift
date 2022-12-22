@@ -11,7 +11,9 @@ struct MyCardView: View {
     
     @State private var segmentationSelection = 0
     @EnvironmentObject var vm : ViewModel
-    @EnvironmentObject var auth : AuthViewModel
+
+    @EnvironmentObject var authModel : AuthViewModel
+
     @State var currentCompany = "삼성카드"
 
 
@@ -48,9 +50,9 @@ struct MyCardView: View {
                 }
                 .padding(.trailing, 20)
                 .offset(y: 240)
-//                .navigationTitle("다영님이 소유한 카드")
-                .navigationTitle("다영님이 소유한 카드")
-                .toolbar {
+
+                .navigationTitle("\(authModel.loginedUserName)님이 소유한 카드")   //#45 닉네임 데이터 수정 필요 (feat.LJA)
+                .toolbar {  
                     Button {
                     } label: {
                         Image(systemName: "bell.fill")

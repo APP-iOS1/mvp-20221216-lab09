@@ -97,7 +97,7 @@ struct BenefitCategoryView: View {
                         
                         ForEach(items) {item in
                             NavigationLink {
-                                BenefitCategoryDetailView()
+                                BenefitCategoryDetailView(categoryName: item.title) //#29 카테고리 선택 시 데이터 연동 - 혜택모아보기에서 선택된 값을 디테일 뷰쪽으로 넘김 (feat.LJA)
                             } label: {
                                 ItemView(item: item)
                             }
