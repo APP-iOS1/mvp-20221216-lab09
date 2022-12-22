@@ -68,6 +68,7 @@ struct SignUpView: View {
                     .foregroundColor(.white)
                     .background(Rectangle().fill(Color("MainColor")))
                     .cornerRadius(10)
+                    //.shadow(radius: 5, x:5, y:5)
                     .padding()
             }
             .toolbar{
