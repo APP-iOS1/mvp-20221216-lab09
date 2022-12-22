@@ -131,22 +131,22 @@ struct SignUpView: View {
             
             HStack {
                 TextField("이메일을 입력해주세요", text: $idText)
-                    .frame(width: 210)
+//                    .frame(width: 210)    //중복 확인 생기면 주석 풀기
+                    .frame(width: 300)
                     .textInputAutocapitalization(.never)
                     .foregroundColor(.black)
                     .overlay(Rectangle().frame(height: 2).padding(.top, 30))
                     .foregroundColor(.mainColor)
-                Button {
-
-                } label: {
-                    Text("중복 확인")
-                }
-                .frame(width: 80, height: 40)
-                .foregroundColor(.white)
-                .background(Rectangle().fill(Color("MainColor")))
-                .cornerRadius(10)
-                .shadow(radius: 5, x:5, y:5)
-
+//                Button {
+//
+//                } label: {
+//                    Text("중복 확인")
+//                }
+//                .frame(width: 80, height: 40)
+//                .foregroundColor(.white)
+//                .background(Rectangle().fill(Color("MainColor")))
+//                .cornerRadius(10)
+//                .shadow(radius: 5, x:5, y:5)
             }
             
             if checkEmailRule(email: idText) {

@@ -47,7 +47,7 @@ class ViewModel : ObservableObject{
                 for document in snapshot.documents{
                     var arr : [TestDic] = []
                     let id: String = document.documentID
-                    
+                    print(id)
                     
                     let docData = document.data()
                     
