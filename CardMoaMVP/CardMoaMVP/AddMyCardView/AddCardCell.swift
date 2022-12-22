@@ -69,11 +69,11 @@ struct AddCardCell: View {
                         }
                         .frame(height: 100)
                         VStack(alignment: .leading) {
-                            ForEach(Array(card.categorys.enumerated()), id: \.offset ){ index , object in
+                            ForEach(Array(vm.categorys.enumerated()), id: \.offset ){ index , object in
                                 if index < 4 {
                                     HStack {
-                                        
-                                        Text(card.categorys[index].category)
+                                        Text(object.id)
+//                                        Text(card.categorys[index].category)
 //                                        switch card.categorys[index].category{
 //                                        case "cafe":
 //                                            Image(systemName: "cup.and.saucer.fill")

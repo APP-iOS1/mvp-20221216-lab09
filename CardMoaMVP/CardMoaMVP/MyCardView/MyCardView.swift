@@ -11,7 +11,9 @@ struct MyCardView: View {
     
     @State private var segmentationSelection = 0
     @EnvironmentObject var vm : ViewModel
+
     @EnvironmentObject var authModel : AuthViewModel
+
     @State var currentCompany = "삼성카드"
 
 
@@ -35,6 +37,7 @@ struct MyCardView: View {
                     NavigationLink {
                         AddMyCardView(currentCompany: $currentCompany).onAppear{
                             vm.fetchCards(cardBrand: "Samsung")
+                            vm.fetchCategorys(cardBrand: "Samsung", cardName: "taptapO")
                         }
                     } label: {
                         Image(systemName: "plus.circle.fill")
@@ -47,6 +50,7 @@ struct MyCardView: View {
                 }
                 .padding(.trailing, 20)
                 .offset(y: 240)
+
                 .navigationTitle("\(authModel.loginedUserName)님이 소유한 카드")   //#45 닉네임 데이터 수정 필요 (feat.LJA)
                 .toolbar {  
                     Button {
