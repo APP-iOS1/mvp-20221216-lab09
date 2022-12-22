@@ -13,9 +13,11 @@ struct SignUpView: View {
     @State var idText : String = ""
     @State var passwordText : String = ""
     @State var passwordCheckText : String = ""
-    
     @State var creatAlert : Bool = false
     @State var alertMessage : String = ""
+    var emailOK = false
+    var passwordOK = false
+    var passwordCheckOK = false
     
     @EnvironmentObject var authModel : AuthViewModel
     
@@ -66,7 +68,6 @@ struct SignUpView: View {
                     .foregroundColor(.white)
                     .background(Rectangle().fill(Color("MainColor")))
                     .cornerRadius(10)
-                    .shadow(radius: 5, x:5, y:5)
                     .padding()
             }
             .toolbar{
@@ -169,6 +170,11 @@ struct SignUpView: View {
     }
     
     // MARK: - 바밀번호 입력필드
+    func checkPasswordRule(password : String) -> Bool {
+        let regExp = "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-]).{6,20}$"
+        return password.range(of: regExp, options: .regularExpression) != nil
+    }
+    
     private var PasswordFieldSection : some View {
         VStack(alignment: .leading) {
             
@@ -187,22 +193,22 @@ struct SignUpView: View {
                 .foregroundColor(.mainColor)
             
             
-            if passwordText.count > 5 {
+            if checkPasswordRule(password: passwordText) {
+                
                 Text("사용 가능한 비밀번호입니다.\n")
                     .foregroundColor(.green)
                     .font(.caption)
                 
             } else if passwordText.isEmpty == false {
                 
-                Text("비밀번호는 최소 6자리 이상으로 구성되어야합니다.\n")
+                Text("영문, 숫자, 특수문자를 포함하여 6자리 이상으로 입력해주세요.\n")
                     .foregroundColor(.red)
                     .font(.caption)
                 
             } else {
                 Text("\n")
                     .font(.caption)
-            }
-        }
+            }        }
     }
     
     // MARK: - 비밀번호 확인 필드
