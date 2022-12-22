@@ -46,7 +46,6 @@ struct MyCardView: View {
                             
                     }
                 }
-                //
                 .padding(.trailing, 20)
                 .offset(y: 240)
 //                .navigationTitle("다영님이 소유한 카드")
