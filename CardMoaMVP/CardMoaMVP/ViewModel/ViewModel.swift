@@ -152,6 +152,64 @@ class ViewModel : ObservableObject{
     }
     
     
+    // TODO: 선택된 카테고리별로 데이터베이스에서 카드 혜택이 있는지 확인 -> 후 해당 카드 이름 저장
+    func searchCaregory(category : String) {
+        
+        var categoryKeyword : String = category
+        
+        switch category {
+        case "외식" :
+            categoryKeyword = "eatout"
+        case "카페" :
+            categoryKeyword = "cafe"
+            
+        default :
+            print("카테고리 없음")
+            
+        }
+        
+        database.collection("test_NH").getDocuments { (snapshot , error) in
+            if let snapshot{
+                for document in snapshot.documents{
+                    var arr : [TestDic] = []
+                    let id: String = document.documentID
+                    
+                    
+                    let docData = document.data()
+                    
+                    let cardImage : String = docData["cardImage"] as? String ?? ""
+                    
+                    //test_nh
+                    let categorys : [ Any ]  = docData["categorys"] as! [Any]
+                    
+                    for i in categorys{
+                        let categorys : [String:String] = i as? [String:String] ?? [:]
+                        let category : String = categorys["category"] ?? ""
+//                        print(i)
+//                        print(type(of: i))
+                        let discount : String = categorys["discount"] ?? ""
+//                        let exception : String = categorys["exception"] ?? ""
+                        
+                        let store : [String] = categorys["store"] as? [String] ?? []
+//                        print("store: \(store)")
+//                        print(type(of: store))
+                        print(store)
+                        arr.append(TestDic(category: category, discount: discount))
+                    }
+                    
+                    
+                    let card : CardName = CardName(id: id, cardImage: cardImage, cardName: id,categorys: arr)
+                    
+                    self.cards.append(card)
+                    
+                }
+            }
+        }
+
+        
+    }
+    
+    
 }
 
 

@@ -9,6 +9,10 @@ import SwiftUI
 // TODO: - db에서 받아서 텍스트 불러와야하는 곳이라 프레임만 만듦 !
 
 struct BenefitCategoryDetailView: View {
+    
+    @State var categoryName : String
+    @EnvironmentObject var vm : ViewModel
+    
     var body: some View {
         VStack {
 //            HStack{
@@ -48,13 +52,18 @@ struct BenefitCategoryDetailView: View {
                 .padding(5)
                 .shadow(radius: 7, x: 0, y: 5)
             }
-            .navigationTitle("카테고리명")
+            .navigationTitle(categoryName)
+        }.onAppear{
+            print("여기 : \(categoryName)")
+            
+            //여기서 카테고리별 카드가 있는지 없는지 확인하는 함수 불러옴
+            vm.searchCaregory(category: categoryName)
         }
     }
 }
 
 struct BenefitCategoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        BenefitCategoryDetailView()
+        BenefitCategoryDetailView(categoryName: "카테고리네임").environmentObject(ViewModel())
     }
 }

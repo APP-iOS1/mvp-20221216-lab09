@@ -97,7 +97,7 @@ struct BenefitCategoryView: View {
                         
                         ForEach(items) {item in
                             NavigationLink {
-                                BenefitCategoryDetailView()
+                                BenefitCategoryDetailView(categoryName: item.title)
                             } label: {
                                 ItemView(item: item)
                             }

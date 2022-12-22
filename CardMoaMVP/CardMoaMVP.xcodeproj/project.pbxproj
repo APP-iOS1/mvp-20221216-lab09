@@ -187,8 +187,8 @@
 		D5B88FCD2952E74D00B42622 /* CardMapView */ = {
 			isa = PBXGroup;
 			children = (
-				D5B88FCE2952E76200B42622 /* CardMapView.swift */,
 				D5B88FD02952E83600B42622 /* CategoryButtons.swift */,
+				D5B88FCE2952E76200B42622 /* CardMapView.swift */,
 			);
 			path = CardMapView;
 			sourceTree = "<group>";
