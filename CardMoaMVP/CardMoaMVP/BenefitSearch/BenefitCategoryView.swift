@@ -104,6 +104,7 @@ struct BenefitCategoryView: View {
                         }
                     }
                     .padding(.horizontal)
+                    .padding(.bottom, 20)
                 }
                 
             }

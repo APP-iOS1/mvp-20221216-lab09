@@ -8,32 +8,24 @@
 import SwiftUI
 
 struct CategoryButtons: View {
-    let category : [String] = ["외식", "카페", "대형마트", "편의점", "의료", "뷰티", "문화", "영화", "주유소"]
-//    @Binding var selectedCategory: Int
+    let category : [String] = ["카페", "외식", "대형마트", "편의점", "의료", "뷰티", "문화", "영화", "주유소"]
+    @Binding var selectedCategoryButton: Int
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach (category, id: \.self) { i in
+                ForEach (category.indices, id: \.self) { i in
                     Button {
-                        
+                        selectedCategoryButton = i
                     } label: {
-                        Text(i)
+                        Text(category[i])
                     }
-             //        1번 방식 - background색이 캡슐 모양 밖으로도 생김.. ㅜ
-//                                        .frame(width: 80, height: 45)
-//                                        .foregroundColor(.black)
-//                                        .background(Color.yellow)
-//                                        .overlay(
-//                                            Capsule().stroke(Color.mainColor, lineWidth: 3)
-//                                        )
-//                                        .padding(.vertical, 4)
-                    
-                    // 2번 방식
-                    .frame(width: 80, height: 40)
-                    //                    .padding(30)
-                    .background(.white)
-                    .foregroundColor(.black)
+//                    .frame(width: 80, height: 40)
+                    .frame(height: 40)
+                    .padding(.horizontal)
+                    // 버튼 클릭시 색 변하는 것 참고하기
+                    .foregroundColor(selectedCategoryButton == i ? .white : .black)
+                    .background(selectedCategoryButton == i ? Color.mainColor : .white)
                     .cornerRadius(20)
                     .shadow(radius: 2)
                     .overlay(
@@ -43,10 +35,6 @@ struct CategoryButtons: View {
                     .padding(.leading, 3)
                     .padding(.vertical, 6)
 //                    .shadow(radius: 3)
-                    // 버튼 클릭시 색 변하는 것 참고하기
-//                    .foregroundColor(selectedCategory == i ? .white : .black)
-//                    .tint(selectedCategory == i ? Color.accentColor : .white)
-                    
                 }
             }
             //                        .background(Color.yellow)
@@ -56,7 +44,8 @@ struct CategoryButtons: View {
 }
 
 struct CategoryButtons_Previews: PreviewProvider {
+    @State static var selectedCategoryButton: Int = 0
     static var previews: some View {
-        CategoryButtons()
+        CategoryButtons(selectedCategoryButton: $selectedCategoryButton)
     }
 }

@@ -27,6 +27,7 @@ struct CardMapView: View {
     @State private var search : String = ""
     @State private var view : Int = 0
     @State var searchString : String = ""
+    @State var selectedCategoryButton: Int = 0
     
     @State private var region: MKCoordinateRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 37.571379, longitude: 126.978678),
@@ -72,15 +73,16 @@ struct CardMapView: View {
                         .background(.white)
                         .cornerRadius(10)
                         .padding(.horizontal)
-                    CategoryButtons()
+                    CategoryButtons(selectedCategoryButton: $selectedCategoryButton)
                     // 패딩해서 띄워지기는 하나 스크롤하면 들어가는 부분이 이상하긴 함!
                         .padding(.leading, 7)
                     Spacer()
                 }
             }
-
-            
-
+            // 빈 공간을 탭한 경우 키보드 내리기 - 네비게이션 타이틀 아래로는 아무곳이나 터치해도 키보드 내려감
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
 }
