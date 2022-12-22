@@ -16,7 +16,6 @@ struct CardBackView: View {
     
     var body: some View {
         Text("back").rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
-        
     }
     
 }

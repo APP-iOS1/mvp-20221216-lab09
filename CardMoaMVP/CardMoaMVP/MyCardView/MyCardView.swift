@@ -11,6 +11,7 @@ struct MyCardView: View {
     
     @State private var segmentationSelection = 0
     @EnvironmentObject var vm : ViewModel
+    @EnvironmentObject var auth : AuthViewModel
     @State var currentCompany = "삼성카드"
 
 
@@ -34,6 +35,7 @@ struct MyCardView: View {
                     NavigationLink {
                         AddMyCardView(currentCompany: $currentCompany).onAppear{
                             vm.fetchCards(cardBrand: "Samsung")
+                            vm.fetchCategorys(cardBrand: "Samsung", cardName: "taptapO")
                         }
                     } label: {
                         Image(systemName: "plus.circle.fill")
@@ -46,6 +48,7 @@ struct MyCardView: View {
                 }
                 .padding(.trailing, 20)
                 .offset(y: 240)
+//                .navigationTitle("다영님이 소유한 카드")
                 .navigationTitle("다영님이 소유한 카드")
                 .toolbar {
                     Button {
@@ -69,6 +72,6 @@ struct MyCardView: View {
 //test
 struct MyCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MyCardView().environmentObject(ViewModel())
+        MyCardView().environmentObject(ViewModel()).environmentObject(AuthViewModel())
     }
 }

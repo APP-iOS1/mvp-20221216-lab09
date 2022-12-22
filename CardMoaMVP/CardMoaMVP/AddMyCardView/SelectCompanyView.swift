@@ -36,6 +36,7 @@ struct SelectCompanyView: View {
                             if cardCompany.contains(names[i]) {
                                 currentCompanyStore.companyName = names[i]
                                 vm.fetchCards(cardBrand: collections[i])
+//                                vm.fetchCategorys(cardBrand: collections[i], cardName: String)
                                 showingSheet.toggle()
                             }
  
