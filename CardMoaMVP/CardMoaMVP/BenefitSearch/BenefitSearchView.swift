@@ -9,8 +9,9 @@ import SwiftUI
 
 struct BenefitSearchView: View {
     @State private var search = ""
-//    @State private var view : Int = 0
-//    @State var searchString : String = ""
+    //    @State private var view : Int = 0
+    //    @State var searchString : String = ""
+    @EnvironmentObject var vm : ViewModel
     
     var body: some View {
         NavigationStack {
@@ -19,14 +20,16 @@ struct BenefitSearchView: View {
                     TextField("가맹점 검색", text: $search)
                     NavigationLink {
                         // TODO: - 검색버튼 클릭시 새 뷰로 이동 완료, 최근 검색어에 텍스트 추가
-                       
                         if search == "파리바게뜨" {
                             CardResultView(search: $search)
                         } else {
                             NoCardResultView(search: $search)
                         }
                     } label: {
-                        Image(systemName: "magnifyingglass").foregroundColor(.black)
+                        Image(systemName: "magnifyingglass").foregroundColor(.black).onTapGesture {
+                            vm.addUsersCurrentSearch(searchWord: search)
+                            
+                        }
                     }
                 }.padding().background(Color.lightGray).cornerRadius(10).padding()
                 BenefitCategoryView(search: $search)
@@ -49,6 +52,6 @@ extension View {
 
 struct BenefitSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        BenefitSearchView()
+        BenefitSearchView().environmentObject(ViewModel())
     }
 }

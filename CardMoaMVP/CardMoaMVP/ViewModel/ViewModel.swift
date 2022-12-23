@@ -141,6 +141,20 @@ class ViewModel : ObservableObject{
             }
         }
     }
+    // MARK: 최근 검색어 전체삭제
+    func removeAllUsersCurrentSearch(){
+        
+    }
+    // MARK: 혜택검색 뷰에서 검색 시 최근검색어 쌓아주기
+    func addUsersCurrentSearch(searchWord: String){
+        let authId = Auth.auth().currentUser?.uid ?? ""
+        database.collection("Users").document(authId).updateData(
+            [ "currentSearch" : FieldValue.arrayUnion([searchWord])
+            ]
+            
+        )
+        fetchUsersCurrentSearch()
+    }
     // MARK: 유저데이터에 카드, 최근 검색 저장
     func addUsersData(cardName: String, cardImage: String){
         let authId = Auth.auth().currentUser?.uid ?? ""
