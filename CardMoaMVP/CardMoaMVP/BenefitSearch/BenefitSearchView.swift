@@ -16,7 +16,7 @@ struct BenefitSearchView: View {
         NavigationStack {
             VStack{
                 HStack{
-                    TextField("검색어를 입력해주세요", text: $search)
+                    TextField("가맹점 검색하기", text: $search)
                     Button {
                         // TODO: - 검색버튼 클릭시 새 뷰로 이동, 최근 검색어에 텍스트 추가
                         // 임시용 이전 코드 가져와서 뷰와 연결한 상태
@@ -47,8 +47,18 @@ struct BenefitSearchView: View {
                     Spacer()
             }
             .navigationTitle("혜택 검색")
+            // 빈 공간을 탭한 경우 키보드 내리기 - 네비게이션 타이틀 아래로는 아무곳이나 터치해도 키보드 내려감
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
+}
+
+extension View {
+  func hideKeyboard() {
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+  }
 }
 
 struct BenefitSearchView_Previews: PreviewProvider {
