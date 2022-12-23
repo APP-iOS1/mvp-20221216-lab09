@@ -20,7 +20,7 @@ struct TestCardList: View {
     var body: some View {
         VStack{
             Button {
-                vm.fetchCategorys(cardBrand: "Hyundai", cardName: "inflca")
+//                vm.fetchCategorys(cardBrand: "Hyundai", cardName: "inflca")
             } label: {
                 Text("button")
             }
@@ -46,7 +46,7 @@ struct TestCardList: View {
             vm.fetchCards(cardBrand: selectedCard)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                 for i in vm.cards{
-                    vm.fetchCategorys(cardBrand: selectedCard, cardName: i.cardName)
+//                    vm.fetchCategorys(cardBrand: selectedCard, cardName: i.cardName)
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                         print(vm.categorys)
                     }

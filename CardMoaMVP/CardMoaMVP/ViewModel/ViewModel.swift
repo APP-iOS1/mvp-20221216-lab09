@@ -5,111 +5,90 @@ import Firebase
 
 class ViewModel : ObservableObject{
     @Published var cards : [CardName] = []
-    @Published var categorys : [Catergory] = []
-    
+    @Published var categorys : [Category] = []
     @Published var userCards : [UserCard] = []
+    @Published var brandCategory  = [[]]
     
-    //    @Published var allFetch : [TestDic] = []
+    
     
     let database = Firestore.firestore()
-    
     
     init(){
         cards = []
         categorys = []
-        //        allFetch = []
         userCards = []
+        brandCategory = []
     }
-    
     // MARK: 회사 별 카드 종류
     func fetchCards(cardBrand: String){
-        
-//        var changeName : String = ""
-//        switch cardBrand{
-//        case "현대카드":
-//            changeName = "Hyundai"
-//        case "농협카드":
-//            changeName = "NH"
-//        case "삼성카드":
-//            changeName = "Samsung"
-//        default:
-//            changeName = ""
-//
-//        }
-//        print(changeName)
-        //collection(cardBrand) < - (changeName)
-        
         database.collection(cardBrand).getDocuments { (snapshot , error) in
             self.cards.removeAll()
-    
+            
             
             if let snapshot{
                 for document in snapshot.documents{
-                    var arr : [TestDic] = []
+                    var temp : [Category] = []
                     let id: String = document.documentID
-                    print(id)
+//                    print(id)
                     
                     let docData = document.data()
                     
                     let cardImage : String = docData["cardImage"] as? String ?? ""
                     
-                    //test_nh
                     let categorys : [ Any ]  = docData["categorys"] as! [Any]
+//                    print(cardImage)
                     
                     for i in categorys{
-                        let categorys : [String:String] = i as? [String:String] ?? [:]
-                        let category : String = categorys["category"] ?? ""
-//                        print(i)
-//                        print(type(of: i))
-                        let discount : String = categorys["discount"] ?? ""
-//                        let exception : String = categorys["exception"] ?? ""
                         
+                        let categorys : [String:Any] = i as? [String:Any] ?? [:]
+                        let category : String = categorys["category"] as! String
+                        let discount : String = categorys["discount"] as? String ?? ""
                         let store : [String] = categorys["store"] as? [String] ?? []
-//                        print("store: \(store)")
-//                        print(type(of: store))
-                        print(store)
-                        arr.append(TestDic(category: category, discount: discount))
+                        let exception : String = categorys["exception"] as? String ?? ""
+//                        print(category)
+//                        print(discount)
+//                        print(store)
+                        let arrCategory = Category(id: category, discount: discount, store: store, exception: exception,category: category)
+                        temp.append(arrCategory)
                     }
-                    
-                    
-                    let card : CardName = CardName(id: id, cardImage: cardImage, cardName: id,categorys: arr)
+                    let card : CardName = CardName(id: id, cardImage: cardImage, cardName: id, categorys: temp )
                     
                     self.cards.append(card)
                     
                 }
             }
         }
-        print(cards)
+//        print("\(cards) \n")
     }
     // MARK: 카드 별 혜택 정보 가져오기
-    func fetchCategorys(cardBrand: String, cardName: String ){
-        database.collection(cardBrand).document(cardName).collection("Category").getDocuments { (snapshot , error) in
-            self.categorys.removeAll()
-            if let snapshot{
-                for document in snapshot.documents{
-                    
-                    let id: String = document.documentID
-                    
-                    let docData = document.data()
-                    
-                    let discount : String = docData["discount"] as? String ?? ""
-//                    print(docData)
-                    let store : Array<String> = docData["store"] as? Array<String> ?? []
-//                    print("store :\(store)")
-                    let exception : String = docData["exception"] as? String ?? ""
-                    let category : Catergory = Catergory(id: id, discount: discount, store: store, exceptionn: exception)
-                    
-                    self.categorys.append(category)
-                    
-                }
-                
-            }
-            
-        }
-        print(categorys)
-    }
+//    func fetchCategorys(cardBrand: String, cardName: String ){
+//        database.collection(cardBrand).document(cardName).collection("Category").getDocuments { (snapshot , error) in
+//            self.categorys.removeAll()
+//            if let snapshot{
+//                for document in snapshot.documents{
+//
+//                    let id: String = document.documentID
+//
+//                    let docData = document.data()
+//
+//                    let discount : String = docData["discount"] as? String ?? ""
+//                    //                    print(docData)
+//                    let store : Array<String> = docData["store"] as? Array<String> ?? []
+//                    //                    print("store :\(store)")
+//                    let exception : String = docData["exception"] as? String ?? ""
+//                    let category : Catergory = Catergory(id: id, discount: discount, store: store, exceptionn: exception)
+//
+//                    self.categorys.append(category)
+//
+//                }
+//
+//            }
+//
+//        }
+//        print(categorys)
+//    }
+    // 현재 파이어베이스에 저장되어 있는 유저의 카드 목록을 보여줍니다 ( 카드 이름, 카드 이미지 )까지만
     func fetchUserData(){
-        print("출력 완료")
         database.collection("Users").getDocuments { snapshot, error in
             self.userCards.removeAll()
             if let snapshot{
@@ -134,11 +113,11 @@ class ViewModel : ObservableObject{
             }
         }
     }
+    
     // MARK: 유저데이터에 카드, 최근 검색 저장
+    // TODO: 파이어베이스에 setData()넣는 작업이 필요
     func addUsersData(cardName: String, cardImage: String){
         let authId = Auth.auth().currentUser?.uid ?? ""
-
-        
         let mycard = UsersMyCard(currentSearch: ["테스트"], myCard: [MyCard(cardName: cardName, cardImage: cardImage)])
         
         database.collection("Users").document(authId).setData(mycard as! [String : Any]){ error in
@@ -150,17 +129,39 @@ class ViewModel : ObservableObject{
             print("success")
         }
     }
-    
-    
+    // MARK: 카드 별 혜택 카테고리 가져오기
+    func fetchBenefitCategorys(cardBrand: String){
+        database.collection(cardBrand).getDocuments { snapshot, error in
+            self.brandCategory.removeAll()
+            if let snapshot{
+                for document in snapshot.documents{
+                    var temp : [String] = []
+                    
+                    let id: String = document.documentID
+                    let docData = document.data()
+                    
+                    let cardImage : String = docData["cardImage"] as? String ?? ""
+                    
+                    let categorys : [ Any ]  = docData["categorys"] as! [Any]
+                    print(id)
+                    //                    self.brandCategory.append(BrandCategory(categoryArr: temp))
+                    //                    temp.removeAll()
+                    //                    print(temp)
+                    for i in categorys{
+                        let categorys : [String:Any] = i as? [String:Any] ?? [:]
+                        let category : String = categorys["category"] as! String
+                        let discount : String = categorys["discount"] as? String ?? ""
+                        let store : [String] = categorys["store"] as? [String] ?? []
+                        print(category)
+                        print(discount)
+                        print(store)
+                        
+                    }
+                    //                    self.brandCategory.append(temp)
+                    
+                }
+            }
+        }
+        //        print("brandCategory: \(brandCategory)")
+    }
 }
-
-
-//store =     (
-//    starbucks,
-//    "\Ud22c\Uc378\Ud50c\Ub808\Uc774\Uc2a4",
-//    "\Uce74\Ud398\Ubca0\Ub124",
-//    "\Ud0d0\Uc564\Ud0d0\Uc2a4",
-//    "\Ucee4\Ud53c\Ube48",
-//    "\Ud560\Ub9ac\Uc2a4",
-//    "\Ud30c\Uc2a4\Ucfe0"
-//);
