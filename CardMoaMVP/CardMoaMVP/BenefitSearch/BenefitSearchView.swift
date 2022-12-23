@@ -28,7 +28,7 @@ struct BenefitSearchView: View {
                     } label: {
                         Image(systemName: "magnifyingglass").foregroundColor(.black).onTapGesture {
                             vm.addUsersCurrentSearch(searchWord: search)
-                            
+                            search = ""
                         }
                     }
                 }.padding().background(Color.lightGray).cornerRadius(10).padding()

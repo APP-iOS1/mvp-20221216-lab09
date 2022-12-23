@@ -68,6 +68,9 @@ struct BenefitCategoryView: View {
                                 .foregroundColor(Color.black)
                                 .cornerRadius(30)
                                 .padding(.trailing, 20)
+                                .onTapGesture {
+                                    vm.removeAllUsersCurrentSearch()
+                                }
                         }
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
