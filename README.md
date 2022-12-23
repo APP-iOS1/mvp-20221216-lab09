@@ -78,23 +78,23 @@
     - 내 카드 혜택 모아보기 아래 가맹점 카테고리별로 본인이 소유한 카드 중 혜택을 받을 수 있는 카드 및 가맹점을 보여준다.
 
 # 화면캡처
-|<img width="200" src="https://user-images.githubusercontent.com/55937627/208879240-52080505-6cc8-4e98-982a-cc3391066cd0.png">|<img width="200" src="https://user-images.githubusercontent.com/55937627/208879243-b0c8296a-22f0-4fed-b30f-cf72ec1ede75.png">|
+|<img width="200" src="https://user-images.githubusercontent.com/55937627/208879240-52080505-6cc8-4e98-982a-cc3391066cd0.png">|<img width="200" src="https://cdn.discordapp.com/attachments/1043033042266107904/1055776228872822814/Simulator_Screen_Shot_-_iPhone_14_Pro_-_2022-12-23_at_17.44.51.png">|
 |:-:|:-:|
 | 로그인뷰 | 회원가입뷰 |
 
-|<img width="200" src="https://user-images.githubusercontent.com/55937627/208879206-d072c826-0e7a-4919-8092-a91f946969c0.png">|
-|:-:|
-| 나의카드뷰 |
+|<img width="200" src="https://cdn.discordapp.com/attachments/1043033042266107904/1055776229174824970/Simulator_Screen_Shot_-_iPhone_14_Pro_-_2022-12-23_at_17.45.30.png">|<img width="200" src="https://cdn.discordapp.com/attachments/1043033042266107904/1055776229451644978/Simulator_Screen_Shot_-_iPhone_14_Pro_-_2022-12-23_at_17.45.44.png">|
+|:-:|:-:|
+| 나의카드뷰 | 나의카드뷰(카드 뒷모습) |
 
-|<img width="200" src="https://user-images.githubusercontent.com/55937627/208879237-ee3c43f5-db34-4b46-a2ca-aeb1b82f6143.png">|<img width="200" src="https://user-images.githubusercontent.com/55937627/208879234-0f0b0dbf-753e-4071-bcb7-8c32435fa850.png">|
+|<img width="200" src="https://cdn.discordapp.com/attachments/1043033042266107904/1055776229732655104/Simulator_Screen_Shot_-_iPhone_14_Pro_-_2022-12-23_at_17.55.26.png">|<img width="200" src="https://user-images.githubusercontent.com/55937627/208879234-0f0b0dbf-753e-4071-bcb7-8c32435fa850.png">|
 |:-:|:-:|
 | 카드추가뷰 | 카드추가뷰(브랜드선택) |
 
-|<img width="200" src="https://user-images.githubusercontent.com/55937627/208879247-e814bf57-b195-4a23-b921-c9f0c72902cb.png">|
+|<img width="200" src="https://cdn.discordapp.com/attachments/1043033042266107904/1055792485345009724/Simulator_Screen_Shot_-_iPhone_14_Pro_-_2022-12-23_at_18.16.37.png">|
 |:-:|
 | 혜택지도뷰 |
 
-|<img width="200" src="https://user-images.githubusercontent.com/55937627/208879228-73f07c77-208b-4bac-b446-08e10796371c.png">|
-|:-:|
-| 혜택검색뷰 |
+|<img width="200" src="https://cdn.discordapp.com/attachments/1043033042266107904/1055792487958052884/Simulator_Screen_Shot_-_iPhone_14_Pro_-_2022-12-23_at_18.16.42.png">|<img width="200" src="https://cdn.discordapp.com/attachments/1043033042266107904/1055792488281030696/Simulator_Screen_Shot_-_iPhone_14_Pro_-_2022-12-23_at_18.17.01.png">|<img width="200" src="https://cdn.discordapp.com/attachments/1043033042266107904/1055792488624955393/Simulator_Screen_Shot_-_iPhone_14_Pro_-_2022-12-23_at_18.17.25.png">|
+|:-:|:-:|:-:|
+| 혜택검색뷰 | 검색결과창(검색한 혜택이 있는 경우) | 검색결과창(검색한 혜택이 없는 경우) |
 
