@@ -37,22 +37,27 @@ struct AddCardCell: View {
                         
                     }
                 )
-            
-            
-            
+
             ZStack {
-                
                 RoundedRectangle(cornerRadius: 10)
                     .foregroundColor(.white)
                     .frame(width: UIScreen.main.bounds.width - 60, height: 170)
                     .shadow(radius: 5, x: 4, y: 3)
+
                     .offset(x: -15)
-                
-                
+
                 VStack {
                     HStack {
                         Text("\(card.cardName)")
                         Spacer()
+                        Button {
+                            vm.addUsersData(cardName: card.cardName, cardImage: card.cardImage)
+                        } label: {
+                            Image(systemName : "plus.circle")
+                                .foregroundColor(.black)
+                        }
+                        .padding(.trailing, 45)
+                        
                     }
                     .padding(.leading, 10)
                     .font(.title3)
@@ -72,60 +77,37 @@ struct AddCardCell: View {
                             ForEach(Array(card.categorys.enumerated()), id:\.offset){ index, card in
                                 if index < 4 {
                                     HStack {
+
                                         Image(systemName: CategoryImage[card.category] ?? "")
                                         Text(CategoryName[card.category] ?? "")
+
                                     }
                                 }
                                 
                             }
-                        }
-                        .padding(8)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke()
-                                .foregroundColor(.gray)
-                        )
-                        .foregroundColor(.gray)
-                    }
-                }
-                .frame(width: UIScreen.main.bounds.width - 60, height: 170)
-                .offset(x: -15)
-                
-            } // ZStack2
-            .offset(x: listX)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        if listX <= 0 && listX >= -20 { //-90보다 크고 0보다 작을 때
-                            listX += value.translation.width / 30
-                            if listX <= -20 { // -90보다 작거나 같을 때
-                                showingAlert = true
-                                
+        
+                            NavigationLink(destination: EmptyView()) {
+                                Text("카드정보 더보기")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 45)
+                                    .padding(.top, 80)
                             }
+
                         }
-                        arrow = ""
                         
                     }
-                    .onEnded { value in
-                        listX = 0
-                        arrow = "<<"
-                    }
-            )
-            .alert("카드를 추가하시겠습니까?", isPresented: $showingAlert) {
-                Button("Cancel", role: .cancel) {
-                    listX = 0
-                    arrow = "<<"
                 }
+
+            } // ZStack2
+            .alert("카드를 추가하시겠습니까?", isPresented: $showingAlert) {
+                Button("Cancel", role: .cancel) {}
                 Button("OK") {
-                    listX = 0
-                    arrow = "<<"
-                    vm.addUsersData(cardName: card.cardName, cardImage: card.cardImage)
+                  vm.addUsersData(cardName: card.cardName, cardImage: card.cardImage)
                 }
                 
             }
         }
-        
-    } // ZStack1
 }
 
 struct AddCardCell_Previews: PreviewProvider {

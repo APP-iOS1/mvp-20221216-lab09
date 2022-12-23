@@ -33,14 +33,14 @@ struct ContentView: View {
                     Image(systemName: "list.dash.header.rectangle")
                     Text("카드 추천")
                 }.tag(4)
-                Text("test").tabItem {
+                ProfileView().tabItem {
                     Image(systemName: "person.crop.rectangle")
                     Text("나의 소비")
                 }.tag(5)
-                TestView().tabItem {
-                    Image(systemName: "person.crop.rectangle")
-                    Text("backTest")
-                }.tag(6)
+//                TestView().tabItem {
+//                    Image(systemName: "person.crop.rectangle")
+//                    Text("backTest")
+//                }.tag(6)
             }
             .onAppear() {
                 UITabBar.appearance().barTintColor = UIColor(Color.white)

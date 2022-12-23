@@ -49,9 +49,11 @@ struct TabBarItem: View {
         } label: {
             VStack {
                 Spacer()
-                Text(tabBarItemName)
+                
                 if currentTab == tab {
                     // 상단 탭 line 색상
+                    Text(tabBarItemName)
+                        .foregroundColor(.black)
                     Color.accentColor
                         .frame(height: 3)
                         .matchedGeometryEffect(id: "underline",
@@ -59,10 +61,13 @@ struct TabBarItem: View {
                                                properties: .frame)
                         .padding(.top, -10)
                 } else {
-                    Color.clear.frame(height: 2)
+                    Text(tabBarItemName)
+                        .foregroundColor(.gray)
+                    Color.clear.frame(height: 3)
+                        .padding(.top, -10)
                 }
             }
-            .animation(.spring(), value: self.currentTab)
+            .animation(.default, value: self.currentTab)
         }
         .buttonStyle(.plain)
     }

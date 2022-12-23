@@ -9,86 +9,41 @@ import SwiftUI
 
 struct BenefitSearchView: View {
     @State private var search = ""
-    @State private var view : Int = 0
-    @State var searchString : String = ""
-    
-    let roundRectangle : RoundRectangle = RoundRectangle()
+//    @State private var view : Int = 0
+//    @State var searchString : String = ""
     
     var body: some View {
         NavigationStack {
             VStack{
                 HStack{
-                    TextField("검색어를 입력해주세요", text: $search)
-                    Button {
-                        // TODO: - 검색버튼 클릭시 새 뷰로 이동, 최근 검색어에 텍스트 추가
-                        // 임시용 이전 코드 가져와서 뷰와 연결한 상태 
-//                        searchString = search
-//                        if search == "파리바게뜨" {
-//                            view = 2
-//                        } else {
-//                            view = 1
-//                        }
+                    TextField("가맹점 검색", text: $search)
+                    NavigationLink {
+                        // TODO: - 검색버튼 클릭시 새 뷰로 이동 완료, 최근 검색어에 텍스트 추가
+                       
+                        if search == "파리바게뜨" {
+                            CardResultView(search: $search)
+                        } else {
+                            NoCardResultView(search: $search)
+                        }
                     } label: {
                         Image(systemName: "magnifyingglass").foregroundColor(.black)
                     }
                 }.padding().background(Color.lightGray).cornerRadius(10).padding()
-                
-                //검색결과가 없는 경우
-//                if view == 1 {
-//                    NoCardResultView(search: $searchString)
-//                        .frame(maxHeight: .infinity)
-//                } else if view == 2 {
-//
-//                    CardResultView(search: $searchString)
-//                        .frame(maxHeight: .infinity)
-//                } else {
-//                    BenefitSearchView()
-//                        .frame(maxHeight: .infinity)
-//                }
-                
-                ScrollView{
-                    HStack {
-                        Text("최근 검색어")
-                            .font(.title3).padding(.leading, 20).fontWeight(.bold)
-                        Spacer()
-                        Button {
-                            // ???: - 배민 참고해서 만듦, 배민에서는 전체삭제하면 최근검색어hstack자체가 없어지긴 함..! 어떻게 할지?
-                        } label: {
-                            Text("전체삭제")
-                                .font(.subheadline)
-                                .padding(EdgeInsets(top: 7, leading: 10, bottom: 7, trailing: 10))
-                                .background(Color.lightGray)
-                                .foregroundColor(Color.black)
-                                .cornerRadius(30)
-                                .padding(.trailing, 20)
-                        }
-                    }
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack{
-                            Text("파리바게뜨").modifier(roundRectangle)
-                            Text("롯데월드").modifier(roundRectangle)
-                            Text("교보문고").modifier(roundRectangle)
-                            Text("스타벅스").modifier(roundRectangle)
-                            Text("커피빈").modifier(roundRectangle)
-                            Text("아웃백").modifier(roundRectangle)
-                            //                        Text("쿠팡").modifier(roundRectangle)
-                            //                        Text("버거킹").modifier(roundRectangle)
-                        }
-                    }.padding(.leading)
-                    
-                    Rectangle().frame(height : 10).foregroundColor(.lightGray).padding([.top])
-                    BenefitCategoryView()
-                    Spacer()
-                }
+                BenefitCategoryView(search: $search)
+                Spacer()
             }
             .navigationTitle("혜택 검색")
+            // 빈 공간을 탭한 경우 키보드 내리기 - 네비게이션 타이틀 아래로는 아무곳이나 터치해도 키보드 내려감
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
     }
 }
 
-struct RoundRectangle : ViewModifier {
-    func body(content: Content) -> some View {
-        content.padding(EdgeInsets(top: 7, leading: 10, bottom: 7, trailing: 10)).background(Color.lightPink).cornerRadius(30).foregroundColor(.mainColor).fontWeight(.semibold)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

@@ -11,10 +11,10 @@ struct MyCardView: View {
     
     @State private var segmentationSelection = 0
     @EnvironmentObject var vm : ViewModel
-    @EnvironmentObject var auth : AuthViewModel
+    @EnvironmentObject var authModel : AuthViewModel
     @State var currentCompany = "삼성카드"
-
-
+    
+    
     
     var body: some View {
         NavigationStack {
@@ -22,12 +22,24 @@ struct MyCardView: View {
                 VStack {
                     HStack {
                         SegmentedControlView(currentTab: $segmentationSelection)
-                            //.padding(.leading)
+                            .padding(.top)
                         Spacer()
+                        Button {
+                        } label: {
+                            Image(systemName: "bell.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 35, height: 40)
+                                .foregroundColor(.yellow)
+                                .padding(.top)
+                                .padding(.trailing, 25)
+                        }
                     }
-                    CardPagingView().onAppear{
-                        vm.fetchUserData()
-                    }
+                    CardPagingView()
+                        .padding(.bottom, 30)
+                        .onAppear{
+                            vm.fetchUserData()
+                        }
                 }
                 .padding(.bottom, 20)
                 HStack {
@@ -43,25 +55,25 @@ struct MyCardView: View {
                             .frame(width: 70, height: 70)
                             .shadow(radius: 5, x:5, y:5)
                             .foregroundColor(.mainColor)
-                            
+                        
                     }
                 }
                 .padding(.trailing, 20)
                 .offset(y: 240)
-//                .navigationTitle("다영님이 소유한 카드")
-                .navigationTitle("다영님이 소유한 카드")
-                .toolbar {
-                    Button {
-                    } label: {
-                        Image(systemName: "bell.fill")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 35)
-                            .foregroundColor(.yellow)
-                            .padding(.trailing, 8)
-                    }
-                }
-
+                //                .navigationTitle("다영님이 소유한 카드")
+                .navigationTitle("\(authModel.loginedUserName)님이 소유한 카드")
+                //                .toolbar {
+                //                    Button {
+                //                    } label: {
+                //                        Image(systemName: "bell.fill")
+                //                            .resizable()
+                //                            .scaledToFill()
+                //                            .frame(width: 35)
+                //                            .foregroundColor(.yellow)
+                //                            .padding(.trailing, 8)
+                //                    }
+                //                }
+                
             }
             
         }
