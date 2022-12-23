@@ -14,6 +14,7 @@
 		A71F699D2951524B006CF5CE /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F699C2951524B006CF5CE /* SignUpView.swift */; };
 		A71F699F29515586006CF5CE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F699E29515586006CF5CE /* AuthViewModel.swift */; };
 		A71F69A129517CF5006CF5CE /* TestCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71F69A029517CF5006CF5CE /* TestCardList.swift */; };
+		A727A8E42955937800C7D13B /* CategoryImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A727A8E32955937800C7D13B /* CategoryImage.swift */; };
 		A7B61E762951DCFF000272A4 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = D5CBCA1029516C5600D199DD /* CollectionViewPagingLayout */; };
 		A7B61E7B2951DDC1000272A4 /* AddCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B61E782951DDC1000272A4 /* AddCardCell.swift */; };
 		A7B61E7C2951DDC1000272A4 /* SelectCompanyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B61E792951DDC1000272A4 /* SelectCompanyView.swift */; };
@@ -55,6 +56,7 @@
 		A71F699C2951524B006CF5CE /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		A71F699E29515586006CF5CE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		A71F69A029517CF5006CF5CE /* TestCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCardList.swift; sourceTree = "<group>"; };
+		A727A8E32955937800C7D13B /* CategoryImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryImage.swift; sourceTree = "<group>"; };
 		A7B61E782951DDC1000272A4 /* AddCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardCell.swift; sourceTree = "<group>"; };
 		A7B61E792951DDC1000272A4 /* SelectCompanyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCompanyView.swift; sourceTree = "<group>"; };
 		A7B61E7A2951DDC1000272A4 /* AddMyCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMyCardView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				A7B61E782951DDC1000272A4 /* AddCardCell.swift */,
 				A7B61E792951DDC1000272A4 /* SelectCompanyView.swift */,
 				D5B88FCB2952A76200B42622 /* Company.swift */,
+				A727A8E32955937800C7D13B /* CategoryImage.swift */,
 			);
 			path = AddMyCardView;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				A71F6997295147C7006CF5CE /* ViewModel.swift in Sources */,
 				A7B61E932951DDD1000272A4 /* CardPagingView.swift in Sources */,
 				D7BEFD8A29505A96001D4AED /* CardMoaMVPApp.swift in Sources */,
+				A727A8E42955937800C7D13B /* CategoryImage.swift in Sources */,
 				D5B88FCC2952A76200B42622 /* Company.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

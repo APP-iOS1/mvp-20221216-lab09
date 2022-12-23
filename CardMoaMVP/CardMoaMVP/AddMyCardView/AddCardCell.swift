@@ -12,7 +12,7 @@ struct AddCardCell: View {
     @EnvironmentObject var vm : ViewModel
     @State private var showingAlert: Bool = false
     @State private var arrow: String = "<<"
-
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
@@ -47,7 +47,7 @@ struct AddCardCell: View {
                     .frame(width: UIScreen.main.bounds.width - 60, height: 170)
                     .shadow(radius: 5, x: 4, y: 3)
                     .offset(x: -15)
-                   
+                
                 
                 VStack {
                     HStack {
@@ -57,7 +57,7 @@ struct AddCardCell: View {
                     .padding(.leading, 10)
                     .font(.title3)
                     .bold()
-                
+                    
                     HStack {
                         AsyncImage(url:URL(string: card.cardImage)){ image in
                             image
@@ -69,81 +69,14 @@ struct AddCardCell: View {
                         .frame(height: 100)
                         
                         VStack(alignment: .leading) {
-
                             ForEach(Array(card.categorys.enumerated()), id:\.offset){ index, card in
-                                HStack{
-                                    if index < 4{
-    //                                    Text(card.category)
-                                        switch card.category{
-                                        case "cafe":
-                                            Image(systemName: "cup.and.saucer.fill")
-                                            Text("카페/베이커리")
-                                                
-                                                
-                                        case "mart":
-                                            Image(systemName: "cart.fill")
-                                            Text("마트")
-                                        case "telephone":
-                                            Image(systemName: "iphone")
-                                            Text("통신")
-                                        case "medical":
-                                            Image(systemName: "cross.case.fill")
-                                            Text("의료")
-                                        case "leisure":
-                                            Image(systemName: "mountain.2.fill")
-                                            Text("레저")
-                                        case "shopping":
-                                            Image(systemName: "handbag.fill")
-                                            Text("쇼핑")
-                                        case "cinema":
-                                            Image(systemName: "film.fill")
-                                            Text("영화관")
-                                        case "eatout":
-                                            Image(systemName: "fork.knife")
-                                            Text("외식")
-                                        case "transport":
-                                            Image(systemName: "bus")
-                                            Text("대중교통")
-                                        case "cvs":
-                                            Image(systemName: "basket.fill")
-                                            Text("편의점")
-                                        case "culture":
-                                            Image(systemName: "play.tv")
-                                            Text("문화")
-                                        case "beauty":
-                                            Image(systemName: "wand.and.stars.inverse")
-                                            Text("뷰티")
-                                        case "insurance":
-                                            Image(systemName: "car.2.fill")
-                                            Text("보험사")
-                                        case "auto":
-                                            Image(systemName: "wrench.and.screwdriver.fill")
-                                            Text("오토")
-                                        case "gasStation":
-                                            Image(systemName: "fuelpump.fill")
-                                            Text("주유소")
-                                        case "easyPayment":
-                                            Image(systemName: "creditcard")
-                                            Text("간편결제")
-                                        case "baby":
-                                            Image(systemName: "teddybear")
-                                            Text("육아")
-                                        case "airport":
-                                            Image(systemName: "airplane")
-                                            Text("프리미엄")
-                                        case "point":
-                                            Image(systemName: "wonsign.square.fill")
-                                            Text("포인트")
-                                        case "maintain":
-                                            Image(systemName: "banknote")
-                                            Text("관리비")
-                                        default:
-                                            Image(systemName: "star.fill")
-                                        }
-                                        
+                                if index < 4 {
+                                    HStack {
+                                        Image(systemName: CategoryImage[card.category] ?? "")
+                                        Text(CategoryName[card.category] ?? "")
                                     }
-                                }.font(.body)        //.font(.caption)
-                               
+                                }
+                                
                             }
                         }
                         .padding(8)

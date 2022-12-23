@@ -132,15 +132,16 @@ class ViewModel : ObservableObject{
     }
     // MARK: 유저 카드데이터 구조 생성
     // TODO: 어떻게 하면 한번만 실행 할지
-    func onApearUserData(oneTime: Bool){
-        if oneTime{
+    func onApearUserData(){
+        
+        if true{
             let authId = Auth.auth().currentUser?.uid ?? ""
             database.collection("Users").document(authId).setData(
                  [ "currentSearch" : [""] ,
                       "mycard" : [
                         [
-                            "cardImage" : "",
-                            "cardName" : ""
+                            "cardImage" : "https://vertical.pstatic.net/vertical-cardad/creatives/NH/10186/NH_10186_20221018-105717_ver.png",
+                            "cardName" : "zgmStreaming"
                         ]
                       ]
                     ]

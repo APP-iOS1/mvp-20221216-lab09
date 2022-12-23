@@ -35,6 +35,7 @@ struct SelectCompanyView: View {
                         Button {
                             if cardCompany.contains(names[i]) {
                                 currentCompanyStore.companyName = names[i]
+                                vm.onApearUserData()
                                 vm.fetchCards(cardBrand: collections[i])
 //                                vm.fetchCategorys(cardBrand: collections[i], cardName: String)
 //                                vm.fetchBenefitCategorys(cardBrand: collections[i])
