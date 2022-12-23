@@ -15,7 +15,19 @@ struct CardBackView: View {
     
     
     var body: some View {
-        Text("back").rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
+        ZStack {
+            RoundedRectangle(cornerRadius: 18)
+                .fill(.white)
+                .frame(width: width, height: height)
+            
+            RoundedRectangle(cornerRadius: 18)
+                .stroke(.gray.opacity(0.7), lineWidth: 0.5)
+                .frame(width: width, height: height)
+            
+            Text("back")
+        }
+        .rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
+        
     }
     
 }
