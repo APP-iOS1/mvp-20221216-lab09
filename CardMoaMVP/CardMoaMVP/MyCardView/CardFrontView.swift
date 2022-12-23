@@ -17,7 +17,7 @@ struct CardFrontView: View {
             RoundedRectangle(cornerRadius: 15)
                 .stroke()
                 .foregroundColor(Color(red: 220/255, green: 220/255, blue: 220/255))
-                .frame(width: 260, height: 400)
+                .frame(width: 220, height: 347)
 
 
             AsyncImage(url:URL(string: card.cardImage ?? "")){ image in
@@ -30,7 +30,7 @@ struct CardFrontView: View {
             } placeholder: {
                 Color.gray
             }
-            .frame(width: 255, height: 400)
+            .frame(width: 220, height: 347)
                 
             
             VStack {
@@ -40,7 +40,7 @@ struct CardFrontView: View {
                 .cornerRadius(15)
                 //.border(.black)
             }
-            .frame(width: 260, height: 400, alignment: .bottom)
+            .frame(width: 220, height: 347, alignment: .bottom)
             
             HStack {
                 Text("\(card.cardName ?? "")")
@@ -58,7 +58,7 @@ struct CardFrontView: View {
 
             }
             .padding(10)
-            .frame(width: 260, height: 400, alignment: .bottom)
+            .frame(width: 220, height: 347, alignment: .bottom)
                      
 
         }

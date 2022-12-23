@@ -11,7 +11,7 @@ struct MyCardView: View {
     
     @State private var segmentationSelection = 0
     @EnvironmentObject var vm : ViewModel
-    @EnvironmentObject var auth : AuthViewModel
+    @EnvironmentObject var authModel : AuthViewModel
     @State var currentCompany = "삼성카드"
 
 
@@ -22,10 +22,12 @@ struct MyCardView: View {
                 VStack {
                     HStack {
                         SegmentedControlView(currentTab: $segmentationSelection)
-                            //.padding(.leading)
+                            .padding(.top)
                         Spacer()
                     }
-                    CardPagingView().onAppear{
+                    CardPagingView()
+                        .padding(.bottom, 30)
+                        .onAppear{
                         vm.fetchUserData()
                     }
                 }
@@ -49,7 +51,7 @@ struct MyCardView: View {
                 .padding(.trailing, 20)
                 .offset(y: 240)
 //                .navigationTitle("다영님이 소유한 카드")
-                .navigationTitle("다영님이 소유한 카드")
+                .navigationTitle("\(authModel.loginedUserName)님이 소유한 카드")
                 .toolbar {
                     Button {
                     } label: {

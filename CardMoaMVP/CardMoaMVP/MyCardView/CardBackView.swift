@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CardBackView: View {
-    let width : CGFloat = 260
-    let height : CGFloat = 410
+    let width : CGFloat = 220
+    let height : CGFloat = 347
     @Binding var degree : Double
     @State private var tag: Int? = nil
     
