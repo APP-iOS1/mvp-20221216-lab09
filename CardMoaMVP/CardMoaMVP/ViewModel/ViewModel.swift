@@ -8,7 +8,7 @@ class ViewModel : ObservableObject{
     @Published var categorys : [Category] = []
     @Published var userCards : [UserCard] = []
     @Published var brandCategory  = [[]]
-    
+    @Published var usersCurrentSearch :[String] = []
     
     
     let database = Firestore.firestore()
@@ -18,6 +18,7 @@ class ViewModel : ObservableObject{
         categorys = []
         userCards = []
         brandCategory = []
+        usersCurrentSearch = []
     }
     // MARK: 회사 별 카드 종류
     func fetchCards(cardBrand: String){
@@ -32,11 +33,12 @@ class ViewModel : ObservableObject{
                     //                    print(id)
                     
                     let docData = document.data()
-                    print(docData)
+                    
                     let cardImage : String = docData["cardImage"] as? String ?? ""
                     
                     let categorys : [ Any ]  = docData["categorys"] as! [Any]
-                    //                    print(cardImage)
+                    print(categorys)
+                    print(type(of: categorys))
                     
                     for i in categorys{
                         
@@ -87,46 +89,55 @@ class ViewModel : ObservableObject{
     //        }
     //        print(categorys)
     //    }
+    
     // 현재 파이어베이스에 저장되어 있는 유저의 카드 목록을 보여줍니다 ( 카드 이름, 카드 이미지 )까지만
-    func fetchUserData(){
-        database.collection("Users").getDocuments { snapshot, error in
-            self.userCards.removeAll()
+    
+    // MARK: 나의 카드 페이지에서 Users DB안에 있는 개인의 카드 목록 보여주기
+    func fetchUsersCardData(){
+        let authId = Auth.auth().currentUser?.uid ?? ""
+        database.collection("Users").document(authId).getDocument { snapshot, error in
             if let snapshot{
-                for document in snapshot.documents{
-                    
-                    let id : String = document.documentID   //카드 이름
-                    let docData = document.data()
-                    
-                    //최근 검색어
-                    let currentSearch : [String] = docData["currentSearch"] as? [String] ?? []
-                    let myCard : [ Any ]  = docData["myCard"] as? [Any] ?? []
-                    
-                    for i in myCard{
-                        let myCard : [String:String] = i as! [String:String]
-                        let cardImage : String = myCard["cardImage"] as? String ?? ""
-                        let cardName : String = myCard["cardName"] as? String ?? ""
-                        
-                        //                        self.userCards.append(UserCard(cardName: cardName, cardImage: cardImage))
-                        self.userCards.append(UserCard(id: UUID().uuidString, cardName: cardName, cardImage: cardImage))
-                    }
+                let docData = snapshot.data()
+                let myCard : [Any] = docData?["myCard"] as! [Any]
+                for i in myCard{
+                    let categorys : [String:Any] = i as? [String:Any] ?? [:]
+                    let cardName : String = categorys["cardName"] as? String ?? ""
+                    let cardImage : String = categorys["cardImage"] as? String ?? ""
+            
+                    self.userCards.append(UserCard(id: UUID().uuidString, cardName: cardName, cardImage: cardImage))
                 }
             }
         }
+    }
+    
+    // MARK: 유저 데이터의 최근 검색어 불러오기
+    func fetchUsersCurrentSearch(){
+        let authId = Auth.auth().currentUser?.uid ?? ""
+        database.collection("Users").document(authId).getDocument { snapshot, error in
+            self.usersCurrentSearch.removeAll()
+            if let snapshot{
+                let docData = snapshot.data()
+                let currentSearch : [ String ]  = docData?["currentSearch"] as? [String] ?? []
+                self.usersCurrentSearch = currentSearch
+//                self.usersCurrentSearch.append(currentSearch)
+            }
+        }
+        print(usersCurrentSearch)
     }
     
     // MARK: 유저데이터에 카드, 최근 검색 저장
     func addUsersData(cardName: String, cardImage: String){
         let authId = Auth.auth().currentUser?.uid ?? ""
         database.collection("Users").document(authId).updateData(
-             [ "currentSearch" : FieldValue.arrayUnion([""]) ,
-                  "mycard" : FieldValue.arrayUnion ([
-                    [
-                        "cardImage" : cardImage,
-                        "cardName" : cardName
-                    ]
-                  ])
+            [ "currentSearch" : FieldValue.arrayUnion([""]) ,
+              "mycard" : FieldValue.arrayUnion ([
+                [
+                    "cardImage" : cardImage,
+                    "cardName" : cardName
                 ]
-        
+              ])
+            ]
+            
         )
         
     }
@@ -137,15 +148,15 @@ class ViewModel : ObservableObject{
         if true{
             let authId = Auth.auth().currentUser?.uid ?? ""
             database.collection("Users").document(authId).setData(
-                 [ "currentSearch" : [""] ,
-                      "myCard" : [
-                        [
-                            "cardImage" : "https://vertical.pstatic.net/vertical-cardad/creatives/NH/10186/NH_10186_20221018-105717_ver.png",
-                            "cardName" : "zgmStreaming"
-                        ]
-                      ]
+                [ "currentSearch" : [""] ,
+                  "myCard" : [
+                    [
+                        "cardImage" : "https://vertical.pstatic.net/vertical-cardad/creatives/NH/10186/NH_10186_20221018-105717_ver.png",
+                        "cardName" : "zgmStreaming"
                     ]
-            
+                  ]
+                ]
+                
             )
         }
         
@@ -165,18 +176,13 @@ class ViewModel : ObservableObject{
                     let cardImage : String = docData["cardImage"] as? String ?? ""
                     
                     let categorys : [ Any ]  = docData["categorys"] as! [Any]
-                    print(id)
-                    //                    self.brandCategory.append(BrandCategory(categoryArr: temp))
-                    //                    temp.removeAll()
-                    //                    print(temp)
+                    
                     for i in categorys{
                         let categorys : [String:Any] = i as? [String:Any] ?? [:]
                         let category : String = categorys["category"] as! String
                         let discount : String = categorys["discount"] as? String ?? ""
                         let store : [String] = categorys["store"] as? [String] ?? []
-                        print(category)
-                        print(discount)
-                        print(store)
+                        
                         
                     }
                     //                    self.brandCategory.append(temp)

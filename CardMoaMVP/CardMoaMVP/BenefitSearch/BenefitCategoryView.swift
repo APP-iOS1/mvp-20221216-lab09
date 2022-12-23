@@ -47,6 +47,8 @@ struct BenefitCategoryView: View {
     ]
     let roundRectangle : RoundRectangle = RoundRectangle()
     @Binding var search : String
+    @EnvironmentObject var vm : ViewModel
+    
     
     var body: some View {
         NavigationStack{
@@ -70,15 +72,21 @@ struct BenefitCategoryView: View {
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack{
+                           
                             NavigationLink {
                                 // 최근검색어에 있는 버튼 클릭시 검색(돋보기)버튼과 같은 맥락
                                 CardResultView(search: $search)
                             } label: {
-                                Text("스타벅스").modifier(roundRectangle)
+                                ForEach(vm.usersCurrentSearch, id: \.self){ item in
+                                    Text(item).modifier(roundRectangle)
+                                }
+//                                Text("스타벅스").modifier(roundRectangle)
 //                                Text("\(search)").modifier(roundRectangle)
                             }
                         }
-                    }.padding(.leading)
+                    }.padding(.leading).onAppear{
+                        vm.fetchUsersCurrentSearch()
+                    }
                     
                     Rectangle().frame(height : 10).foregroundColor(.lightGray).padding([.top])
                     HStack{
@@ -144,7 +152,7 @@ struct RoundRectangle : ViewModifier {
 
 struct BenefitCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        BenefitCategoryView(search: .constant("임시용"))
+        BenefitCategoryView(search: .constant("임시용")).environmentObject(ViewModel())
     }
 }
 

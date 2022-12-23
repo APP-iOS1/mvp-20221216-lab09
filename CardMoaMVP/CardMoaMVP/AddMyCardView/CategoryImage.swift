@@ -52,4 +52,3 @@ let CategoryName: [String : String] = [
     "shopping" :"쇼핑",
     "maintain": "관리비"
 ]
-

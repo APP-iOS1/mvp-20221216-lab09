@@ -38,7 +38,8 @@ struct MyCardView: View {
                     CardPagingView()
                         .padding(.bottom, 30)
                         .onAppear{
-                            vm.fetchUserData()
+                            vm.fetchUsersCardData()
+//                            vm.fetchUsersCurrentSearch()
                         }
                 }
                 .padding(.bottom, 20)
