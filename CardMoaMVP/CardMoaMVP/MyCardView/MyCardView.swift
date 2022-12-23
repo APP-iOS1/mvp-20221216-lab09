@@ -47,7 +47,7 @@ struct MyCardView: View {
                     NavigationLink {
                         AddMyCardView(currentCompany: $currentCompany).onAppear{
                             vm.fetchCards(cardBrand: "Samsung")
-                            vm.fetchCategorys(cardBrand: "Samsung", cardName: "taptapO")
+//                            vm.fetchCategorys(cardBrand: "Samsung", cardName: "taptapO")
                         }
                     } label: {
                         Image(systemName: "plus.circle.fill")
