@@ -77,8 +77,12 @@ struct BenefitCategoryView: View {
                                 // 최근검색어에 있는 버튼 클릭시 검색(돋보기)버튼과 같은 맥락
                                 CardResultView(search: $search)
                             } label: {
-                                ForEach(vm.usersCurrentSearch, id: \.self){ item in
-                                    Text(item).modifier(roundRectangle)
+                                ForEach(Array(vm.usersCurrentSearch.enumerated()), id:\.offset){ index ,item in
+                                    //검색 시 최근검색어 쌓아주기(최대 5개, 이상 추가 시 오래된 검색어 삭제) #30
+                                    if index < 5{
+                                        Text(item).modifier(roundRectangle)
+                                    }
+                                    
                                 }
 //                                Text("스타벅스").modifier(roundRectangle)
 //                                Text("\(search)").modifier(roundRectangle)

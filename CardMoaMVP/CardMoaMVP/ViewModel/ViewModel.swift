@@ -30,15 +30,14 @@ class ViewModel : ObservableObject{
                 for document in snapshot.documents{
                     var temp : [Category] = []
                     let id: String = document.documentID
-                    //                    print(id)
+   
                     
                     let docData = document.data()
                     
                     let cardImage : String = docData["cardImage"] as? String ?? ""
                     
                     let categorys : [ Any ]  = docData["categorys"] as! [Any]
-                    print(categorys)
-                    print(type(of: categorys))
+              
                     
                     for i in categorys{
                         
@@ -47,9 +46,7 @@ class ViewModel : ObservableObject{
                         let discount : String = categorys["discount"] as? String ?? ""
                         let store : [String] = categorys["store"] as? [String] ?? []
                         let exception : String = categorys["exception"] as? String ?? ""
-                        //                        print(category)
-                        //                        print(discount)
-                        //                        print(store)
+       
                         let arrCategory = Category(id: category, discount: discount, store: store, exception: exception,category: category)
                         temp.append(arrCategory)
                     }
@@ -119,12 +116,31 @@ class ViewModel : ObservableObject{
                 let docData = snapshot.data()
                 let currentSearch : [ String ]  = docData?["currentSearch"] as? [String] ?? []
                 self.usersCurrentSearch = currentSearch
-//                self.usersCurrentSearch.append(currentSearch)
+//                 검색 시 최근검색어 쌓아주기(최대 5개, 이상 추가 시 오래된 검색어 삭제) #30
+                if self.usersCurrentSearch.count > 5{
+                    // 배열에서 지움
+                    self.usersCurrentSearch.removeFirst()
+                    // DB에서 지움
+                    self.removeUsersCurrentSearch()
+                }
             }
         }
-        print(usersCurrentSearch)
+        
     }
     
+    // MARK: usersCurrentSearch 갯수가 5개 넘어가면 메서드 호출 usersCurrentSearch의 첫번째 요소 지움
+    func removeUsersCurrentSearch(){
+        let authId = Auth.auth().currentUser?.uid ?? ""
+        database.collection("Users").document(authId).getDocument { snapshot, error in
+            if let snapshot{
+                let docData = snapshot.data()
+                let currentSearch : [ String ]  = docData?["currentSearch"] as? [String] ?? []
+                self.database.collection("Users").document(authId).updateData([
+                    "currentSearch": FieldValue.arrayRemove([currentSearch[0]])
+                ])
+            }
+        }
+    }
     // MARK: 유저데이터에 카드, 최근 검색 저장
     func addUsersData(cardName: String, cardImage: String){
         let authId = Auth.auth().currentUser?.uid ?? ""
@@ -185,11 +201,9 @@ class ViewModel : ObservableObject{
                         
                         
                     }
-                    //                    self.brandCategory.append(temp)
-                    
                 }
             }
         }
-        //        print("brandCategory: \(brandCategory)")
+     
     }
 }
