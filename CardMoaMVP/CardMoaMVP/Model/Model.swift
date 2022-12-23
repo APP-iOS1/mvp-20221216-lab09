@@ -30,8 +30,8 @@ struct MyCard: Hashable{
     var cardImage : String
 }
 struct UsersMyCard{
-    var currentSearch : [String]
-    var myCard : [MyCard]
+    var currentSearch : [String]?
+    var myCard :  [String:String]?
 }
 
 

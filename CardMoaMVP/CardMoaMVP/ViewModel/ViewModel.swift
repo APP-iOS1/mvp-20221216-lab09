@@ -29,14 +29,14 @@ class ViewModel : ObservableObject{
                 for document in snapshot.documents{
                     var temp : [Category] = []
                     let id: String = document.documentID
-//                    print(id)
+                    //                    print(id)
                     
                     let docData = document.data()
-                    
+                    print(docData)
                     let cardImage : String = docData["cardImage"] as? String ?? ""
                     
                     let categorys : [ Any ]  = docData["categorys"] as! [Any]
-//                    print(cardImage)
+                    //                    print(cardImage)
                     
                     for i in categorys{
                         
@@ -45,9 +45,9 @@ class ViewModel : ObservableObject{
                         let discount : String = categorys["discount"] as? String ?? ""
                         let store : [String] = categorys["store"] as? [String] ?? []
                         let exception : String = categorys["exception"] as? String ?? ""
-//                        print(category)
-//                        print(discount)
-//                        print(store)
+                        //                        print(category)
+                        //                        print(discount)
+                        //                        print(store)
                         let arrCategory = Category(id: category, discount: discount, store: store, exception: exception,category: category)
                         temp.append(arrCategory)
                     }
@@ -58,35 +58,35 @@ class ViewModel : ObservableObject{
                 }
             }
         }
-//        print("\(cards) \n")
+        //        print("\(cards) \n")
     }
     // MARK: 카드 별 혜택 정보 가져오기
-//    func fetchCategorys(cardBrand: String, cardName: String ){
-//        database.collection(cardBrand).document(cardName).collection("Category").getDocuments { (snapshot , error) in
-//            self.categorys.removeAll()
-//            if let snapshot{
-//                for document in snapshot.documents{
-//
-//                    let id: String = document.documentID
-//
-//                    let docData = document.data()
-//
-//                    let discount : String = docData["discount"] as? String ?? ""
-//                    //                    print(docData)
-//                    let store : Array<String> = docData["store"] as? Array<String> ?? []
-//                    //                    print("store :\(store)")
-//                    let exception : String = docData["exception"] as? String ?? ""
-//                    let category : Catergory = Catergory(id: id, discount: discount, store: store, exceptionn: exception)
-//
-//                    self.categorys.append(category)
-//
-//                }
-//
-//            }
-//
-//        }
-//        print(categorys)
-//    }
+    //    func fetchCategorys(cardBrand: String, cardName: String ){
+    //        database.collection(cardBrand).document(cardName).collection("Category").getDocuments { (snapshot , error) in
+    //            self.categorys.removeAll()
+    //            if let snapshot{
+    //                for document in snapshot.documents{
+    //
+    //                    let id: String = document.documentID
+    //
+    //                    let docData = document.data()
+    //
+    //                    let discount : String = docData["discount"] as? String ?? ""
+    //                    //                    print(docData)
+    //                    let store : Array<String> = docData["store"] as? Array<String> ?? []
+    //                    //                    print("store :\(store)")
+    //                    let exception : String = docData["exception"] as? String ?? ""
+    //                    let category : Catergory = Catergory(id: id, discount: discount, store: store, exceptionn: exception)
+    //
+    //                    self.categorys.append(category)
+    //
+    //                }
+    //
+    //            }
+    //
+    //        }
+    //        print(categorys)
+    //    }
     // 현재 파이어베이스에 저장되어 있는 유저의 카드 목록을 보여줍니다 ( 카드 이름, 카드 이미지 )까지만
     func fetchUserData(){
         database.collection("Users").getDocuments { snapshot, error in
@@ -99,7 +99,7 @@ class ViewModel : ObservableObject{
                     
                     //최근 검색어
                     let currentSearch : [String] = docData["currentSearch"] as? [String] ?? []
-                    let myCard : [ Any ]  = docData["myCard"] as! [Any]
+                    let myCard : [ Any ]  = docData["myCard"] as? [Any] ?? []
                     
                     for i in myCard{
                         let myCard : [String:String] = i as! [String:String]
@@ -115,20 +115,41 @@ class ViewModel : ObservableObject{
     }
     
     // MARK: 유저데이터에 카드, 최근 검색 저장
-    // TODO: 파이어베이스에 setData()넣는 작업이 필요
     func addUsersData(cardName: String, cardImage: String){
         let authId = Auth.auth().currentUser?.uid ?? ""
-        let mycard = UsersMyCard(currentSearch: ["테스트"], myCard: [MyCard(cardName: cardName, cardImage: cardImage)])
+        database.collection("Users").document(authId).updateData(
+             [ "currentSearch" : FieldValue.arrayUnion([""]) ,
+                  "mycard" : FieldValue.arrayUnion ([
+                    [
+                        "cardImage" : cardImage,
+                        "cardName" : cardName
+                    ]
+                  ])
+                ]
         
-        database.collection("Users").document(authId).setData(mycard as! [String : Any]){ error in
-            
-            if let error = error {
-                print(error)
-                return
-            }
-            print("success")
-        }
+        )
+        
     }
+    // MARK: 유저 카드데이터 구조 생성
+    // TODO: 어떻게 하면 한번만 실행 할지
+    func onApearUserData(oneTime: Bool){
+        if oneTime{
+            let authId = Auth.auth().currentUser?.uid ?? ""
+            database.collection("Users").document(authId).setData(
+                 [ "currentSearch" : [""] ,
+                      "mycard" : [
+                        [
+                            "cardImage" : "",
+                            "cardName" : ""
+                        ]
+                      ]
+                    ]
+            
+            )
+        }
+        
+    }
+    
     // MARK: 카드 별 혜택 카테고리 가져오기
     func fetchBenefitCategorys(cardBrand: String){
         database.collection(cardBrand).getDocuments { snapshot, error in
