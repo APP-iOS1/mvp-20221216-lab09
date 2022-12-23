@@ -138,7 +138,7 @@ class ViewModel : ObservableObject{
             let authId = Auth.auth().currentUser?.uid ?? ""
             database.collection("Users").document(authId).setData(
                  [ "currentSearch" : [""] ,
-                      "mycard" : [
+                      "myCard" : [
                         [
                             "cardImage" : "https://vertical.pstatic.net/vertical-cardad/creatives/NH/10186/NH_10186_20221018-105717_ver.png",
                             "cardName" : "zgmStreaming"
