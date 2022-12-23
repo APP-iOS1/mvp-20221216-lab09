@@ -66,14 +66,7 @@ struct AddMyCardView: View {
                     }
                     .padding(.bottom, 20)
                     .padding(.top, 20)
-                    
-                    HStack {
-                        Spacer()
-                        Text("밀어서 카드 추가")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                            .padding(.trailing, 20)
-                    }
+
                     
                         
                     //CardList

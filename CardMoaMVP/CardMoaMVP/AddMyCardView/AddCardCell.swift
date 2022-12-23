@@ -14,70 +14,84 @@ struct AddCardCell: View {
     @State private var showingAlert: Bool = false
     
     var body: some View {
-            ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(.white)
-                    .frame(width: UIScreen.main.bounds.width - 60, height: 170)
-                    .shadow(radius: 5, x: 4, y: 3)
-                VStack {
-                    HStack {
-                        Text("\(card.cardName)")
-                        Spacer()
-                        Button {
-                            showingAlert.toggle()
-                        } label: {
-                            Image(systemName : "plus.circle")
-                                .foregroundColor(.black)
-                        }
-                        .padding(.trailing, 45)
-                        
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .foregroundColor(.white)
+                .frame(width: UIScreen.main.bounds.width - 50, height: 170)
+                .shadow(radius: 5, x: 4, y: 3)
+            VStack {
+                HStack {
+                    Text("\(card.cardName)")
+                    Spacer()
+                    Button {
+                        showingAlert.toggle()
+                    } label: {
+                        Image(systemName : "plus.circle")
+                            .foregroundColor(.gray)
                     }
-                    .padding(.leading, 10)
-                    .font(.title3)
-                    .bold()
-
-                    HStack {
-                        AsyncImage(url:URL(string: card.cardImage)){ image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                        } placeholder: {
-                            Color.clear
-                        }
-                        .frame(height: 100)
-                        VStack(alignment: .leading) {
-                            ForEach(Array(vm.categorys.enumerated()), id: \.offset ){ index , object in
-                                if index < 4 {
-                                    HStack {
-                                        Image(systemName: CategoryImage[object.id]!)
-                                        Text(CategoryName[object.id]!)
-                                    }
+                    .padding(.trailing, 45)
+                    
+                }
+                .padding(.leading, 40)
+                .padding(.bottom, 2)
+                .font(.title3)
+                .bold()
+                
+                HStack {
+                    AsyncImage(url:URL(string: card.cardImage)){ image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        Color.clear
+                    }
+                    .frame(height: 100)
+                    .padding(.trailing, 15)
+                    VStack(alignment: .leading) {
+                        ForEach(Array(vm.categorys.enumerated()), id: \.offset ){ index , object in
+                            if index < 4 {
+                                HStack {
+                                    Image(systemName: CategoryImage[object.id]!)
+                                    Text(CategoryName[object.id]!)
+                                        .font(.caption)
                                 }
-                              
+                                .padding(.leading, 2)
+                                .foregroundColor(.gray)
                             }
                             
-                            NavigationLink(destination: EmptyView()) {
-                                Text("카드정보 더보기")
-                                    .font(.footnote)
-                                    .foregroundColor(.gray)
-                                    .padding(.trailing, 45)
-                                    .padding(.top, 80)
-                            }
-
                         }
-                        
-                    }
-                }
 
-            } // ZStack2
-            .alert("카드를 추가하시겠습니까?", isPresented: $showingAlert) {
-                Button("Cancel", role: .cancel) {}
-                Button("OK") {
-                    vm.addUsersData(cardName: card.cardName, cardImage: card.cardImage)
+                    }
+                    .padding(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke()
+                            .foregroundColor(.gray)
+                    )
+                    .foregroundColor(.gray)
+                   
+                }
+                HStack {
+                    Spacer()
+                    NavigationLink(destination: EmptyView()) {
+                        Text("카드정보 더보기")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                            .padding(.trailing, 45)
+                    }
                 }
                 
             }
+            
+        } // ZStack2
+        .alert("카드를 추가하시겠습니까?", isPresented: $showingAlert) {
+            Button("Cancel", role: .cancel) {}
+            Button("OK") {
+                vm.addUsersData(cardName: card.cardName, cardImage: card.cardImage)
+            }
+            
         }
+    }
 }
 
 struct AddCardCell_Previews: PreviewProvider {
