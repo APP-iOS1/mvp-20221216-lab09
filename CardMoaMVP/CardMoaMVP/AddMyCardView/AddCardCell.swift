@@ -12,7 +12,6 @@ struct AddCardCell: View {
     var card: CardName
     @EnvironmentObject var vm : ViewModel
     @State private var showingAlert: Bool = false
-    @State private var arrow: String = "<<"
     
     var body: some View {
             ZStack {
@@ -25,7 +24,7 @@ struct AddCardCell: View {
                         Text("\(card.cardName)")
                         Spacer()
                         Button {
-                            vm.addUsersData(cardName: card.cardName, cardImage: card.cardImage)
+                            showingAlert.toggle()
                         } label: {
                             Image(systemName : "plus.circle")
                                 .foregroundColor(.black)
@@ -73,7 +72,9 @@ struct AddCardCell: View {
             } // ZStack2
             .alert("카드를 추가하시겠습니까?", isPresented: $showingAlert) {
                 Button("Cancel", role: .cancel) {}
-                Button("OK") {}
+                Button("OK") {
+                    vm.addUsersData(cardName: card.cardName, cardImage: card.cardImage)
+                }
                 
             }
         }
