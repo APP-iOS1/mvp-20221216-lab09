@@ -28,6 +28,7 @@ struct CardMapView: View {
     @State private var view : Int = 0
     @State var searchString : String = ""
     @State var selectedCategoryButton: Int = 0
+    @State var presentSheet: Bool = false
     
     @State private var region: MKCoordinateRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 37.571379, longitude: 126.978678),
@@ -45,25 +46,35 @@ struct CardMapView: View {
                         //
                         //                MapAnnotation 사용해서 커스텀 마커로 표시하기
                         MapAnnotation(coordinate: item.coordinate) {
-                            VStack {
-                                Image(systemName: "cup.and.saucer.fill")
-                                    .resizable()
-                                    .foregroundColor(.brown)
-                                    .frame(width: 30, height: 30)
-                                    .background(.white)
-                                    .clipShape(Circle())
-                                
-                                VStack{
-                                    Text(item.name).font(.system(size: 15)).fontWeight(.bold)
-                                    Text(item.benefit).font(.system(size: 13)).fontWeight(.bold).foregroundColor(.red)
-                                }.padding(5).background(Color.white.opacity(0.7)).cornerRadius(10)
+                            Button {
+                                // 시트
+                                presentSheet.toggle()
+                            } label: {
+                                VStack {
+                                    Image(systemName: "cup.and.saucer.fill")
+                                        .resizable()
+                                        .foregroundColor(.brown)
+                                        .frame(width: 30, height: 30)
+                                        .background(.white)
+                                        .clipShape(Circle())
+                                    
+                                    VStack{
+                                        Text(item.name).font(.system(size: 15)).fontWeight(.bold).foregroundColor(.black)
+                                        Text(item.benefit).font(.system(size: 13)).fontWeight(.bold).foregroundColor(.red)
+                                    }.padding(5).background(Color.white.opacity(0.7)).cornerRadius(10)
+                                }
                             }
+                            .sheet(isPresented: $presentSheet) {
+                                sheetView(presentSheet: $presentSheet)
+                                    .presentationDetents([.medium])
+                            }
+
                         }
                     }
                 }.ignoresSafeArea(edges: .top)
                 VStack{
                     HStack{
-                        TextField("위치 검색", text: $search)
+                        TextField("지역 검색", text: $search)
                         Button {
                             searchString = search
                         } label: {
@@ -83,6 +94,18 @@ struct CardMapView: View {
             .onTapGesture {
                 hideKeyboard()
             }
+        }
+    }
+}
+
+// 맵 아이콘 클릭시 올라오는 시트
+struct sheetView: View {
+    @Binding var presentSheet: Bool
+    
+    var body: some View {
+        VStack{
+            Text("상세 시트뷰")
+            
         }
     }
 }

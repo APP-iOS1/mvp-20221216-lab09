@@ -46,6 +46,7 @@ struct BenefitCategoryView: View {
         GridItem(.flexible())
     ]
     let roundRectangle : RoundRectangle = RoundRectangle()
+    @Binding var search : String
     
     var body: some View {
         NavigationStack{
@@ -69,17 +70,12 @@ struct BenefitCategoryView: View {
                     }
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack{
-                            Button {
+                            NavigationLink {
                                 // 최근검색어에 있는 버튼 클릭시 검색(돋보기)버튼과 같은 맥락
+                                CardResultView(search: $search)
                             } label: {
-                                Text("파리바게뜨").modifier(roundRectangle)
-                                //                                Text("롯데월드").modifier(roundRectangle)
-                                //                                Text("교보문고").modifier(roundRectangle)
-                                //                                Text("스타벅스").modifier(roundRectangle)
-                                //                                Text("커피빈").modifier(roundRectangle)
-                                //                                Text("아웃백").modifier(roundRectangle)
-                                //                        Text("쿠팡").modifier(roundRectangle)
-                                //                        Text("버거킹").modifier(roundRectangle)
+                                Text("스타벅스").modifier(roundRectangle)
+//                                Text("\(search)").modifier(roundRectangle)
                             }
                         }
                     }.padding(.leading)
@@ -148,7 +144,7 @@ struct RoundRectangle : ViewModifier {
 
 struct BenefitCategoryView_Previews: PreviewProvider {
     static var previews: some View {
-        BenefitCategoryView()
+        BenefitCategoryView(search: .constant("임시용"))
     }
 }
 
