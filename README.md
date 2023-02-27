@@ -19,6 +19,12 @@
 
 # 카드혜택모아 MVP - 테스트 시나리오 및 UI
 
+## 사용 전 준비사항
+1. Firebase와 연동을 위한 Google-Infoplist 필요
+    - 테스트를 희망하시는 분들은 이메일(jina.lee.secu@gmail.com / wlwjdgns920@gmail.com)로 연락주시면, Infoplist 전달드리겠습니다.
+
+2. 전달받으신 Infoplist는 프로젝트 파일(CardMoaMVP 파일) 내부 경로에 넣어서 빌드하시면 됩니다.
+
 ## 사용자 시나리오
 
 *  제시된 사용자 시나리오에 따라 순차적으로 수행해 주시면 됩니다. 감사합니다 :)
