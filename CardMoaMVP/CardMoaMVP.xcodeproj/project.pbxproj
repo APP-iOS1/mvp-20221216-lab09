@@ -39,7 +39,6 @@
 		D7BEFD8C29505A96001D4AED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BEFD8B29505A96001D4AED /* ContentView.swift */; };
 		D7BEFD8E29505A97001D4AED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7BEFD8D29505A97001D4AED /* Assets.xcassets */; };
 		D7BEFD9129505A97001D4AED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7BEFD9029505A97001D4AED /* Preview Assets.xcassets */; };
-		D7BEFD9829505B1C001D4AED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7BEFD9729505B1C001D4AED /* GoogleService-Info.plist */; };
 		D7BEFD9B29505B8A001D4AED /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D7BEFD9A29505B8A001D4AED /* FirebaseAuth */; };
 		D7BEFD9D29505B8A001D4AED /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = D7BEFD9C29505B8A001D4AED /* FirebaseDatabase */; };
 		D7BEFD9F29505B8A001D4AED /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D7BEFD9E29505B8A001D4AED /* FirebaseDatabaseSwift */; };
@@ -81,7 +80,6 @@
 		D7BEFD8B29505A96001D4AED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D7BEFD8D29505A97001D4AED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7BEFD9029505A97001D4AED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		D7BEFD9729505B1C001D4AED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,7 +219,6 @@
 				A71F699229514767006CF5CE /* Model */,
 				A71F699029514756006CF5CE /* View */,
 				A8960A8229536A59005AF529 /* Profile */,
-				D7BEFD9729505B1C001D4AED /* GoogleService-Info.plist */,
 				D7BEFD8929505A96001D4AED /* CardMoaMVPApp.swift */,
 				D7BEFD8B29505A96001D4AED /* ContentView.swift */,
 				D7BEFD8D29505A97001D4AED /* Assets.xcassets */,
@@ -311,7 +308,6 @@
 			files = (
 				D7BEFD9129505A97001D4AED /* Preview Assets.xcassets in Resources */,
 				D7BEFD8E29505A97001D4AED /* Assets.xcassets in Resources */,
-				D7BEFD9829505B1C001D4AED /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
