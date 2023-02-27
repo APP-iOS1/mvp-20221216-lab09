@@ -1,3 +1,5 @@
+//Firebase Google-Infoplist 파일 요청주세요
+
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
